@@ -1,12 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rapport Mission Kdou SAE_1.04</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Accueil - SAE 1.04</title>
+    <link rel="stylesheet" href="assets/styles/styles.css">
   </head>
-  <body>
-    <h1>Rapport Mission Kdou SAE_1.04</h1>  
+  <body class="home-page">
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+    <header>
+      <nav class="navbar">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <a href="index.html" class="nav-logo">SAE 1.04</a>
+        <ul class="nav-menu">
+          <li><a href="introduction.html" class="nav-link">Introduction</a></li>
+          <li><a href="mission1.html" class="nav-link">Mission 1</a></li>
+          <li><a href="mission2.html" class="nav-link">Mission 2</a></li>
+          <li><a href="mission3.html" class="nav-link">Mission 3</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero-section">
+      <h1>Bienvenue sur le rapport SAE 1.04</h1>
+      <p>Analyse des missions pour l'entreprise KDou</p>
+    </section>
+
+    <section class="mission-overview">
+      <article class="mission-btn">
+        <a href="mission1.html">
+          <h2>Mission 1</h2>
+          <p>Exploration des données et analyse initiale pour KDou</p>
+        </a>
+      </article>
+      <article class="mission-btn">
+        <a href="mission2.html">
+          <h2>Mission 2</h2>
+          <p>Exploitation de la BDD KDou avec une interface low code</p>
+        </a>
+      </article>
+      <article class="mission-btn">
+        <a href="mission3.html">
+          <h2>Mission 3</h2>
+          <p>Analyse approfondie des données via SQL</p>
+        </a>
+      </article>
+    </section>
+
+    <footer>
+      <p>&copy; Rapport SAE 1.04 Équipe 12D</p>
+    </footer>
   </body>
 </html>

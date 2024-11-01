@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #2e003e;
+  color: #e0e0e0;
+  text-align: center;
+}
+
+.navbar {
+  background-color: #1c002b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-logo {
+  color: #ffdd57;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.menu-checkbox {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 1.5rem;
+  color: #ffdd57;
+  cursor: pointer;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #4e005f;
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #3e004f;
+    padding: 1rem;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .menu-checkbox:checked ~ .nav-menu {
+    display: flex;
+  }
+
+  .nav-menu li {
+    text-align: left;
+  }
+}
+
+.hero-section {
+  padding: 3rem 1rem;
+  background-color: #1c002b;
+  color: #ffdd57;
+  border-bottom: 3px solid #ffdd57;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+}
+
+.mission-overview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 1rem;
+}
+
+.mission-btn {
+  background: #3e004f;
+  color: #ffdd57;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 250px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.mission-btn:hover {
+  background: #5e0070;
+  transform: scale(1.05);
+}
+
+.mission-btn a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.mission-btn h2 {
+  margin-bottom: 0.5rem;
+}
+
+.mission-btn p {
+  font-size: 0.9rem;
+}
+
+footer {
+  background: #1c002b;
+  padding: 1rem;
+  color: #ffdd57;
+  margin-top: 2rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .mission-overview {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mission-btn {
+    width: 90%;
+  }
+}
