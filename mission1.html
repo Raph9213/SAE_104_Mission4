@@ -1,290 +1,289 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mission 1 - SAE 1.04</title>
-    <link rel="stylesheet" href="assets/styles/mission1.css">
-</head>
-<body class="mission-page">
-    <header>
-        <nav class="navbar">
-            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-            <label for="menu-toggle" class="menu-icon">&#9776;</label>
-            <a href="index.html" class="nav-logo">SAE 1.04</a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Introduction</a></li>
-                <li><a href="mission1.html" class="nav-link">Mission 1</a></li>
-                <li><a href="mission2.html" class="nav-link">Mission 2</a></li>
-                <li><a href="mission3.html" class="nav-link">Mission 3</a></li>
-            </ul>
-        </nav>
-        <h1>Mission 1 : Contexte et Bilan</h1>
-    </header>
-
-    <section class="content-section">
-        <h2>Contexte</h2>
-        <p>
-            <strong>KDou</strong> est une entreprise spécialisée dans la vente de produits alimentaires d’épicerie fine.
-            Actuellement, elle cherche à renforcer son positionnement <strong>éco-responsable</strong> tout en améliorant sa rentabilité.
-            Notre équipe est chargée de l'analyse des données pour aider KDou à améliorer son image et à optimiser ses opérations.
-        </p>
-    </section>
-
-    <section class="content-section">
-        <h2>Questions et réponses</h2>
-
-        <details id="question1">
-            <summary><strong>1) Dans chaque onglet, identifiez quelles sont les colonnes correspondant ou pouvant correspondre à des clés primaires.</strong></summary>
-            <div class="details-content">
-                <p><strong>Fournisseur :</strong> N° Fournisseur</p>
-                <p><strong>Produit :</strong> Réf produit</p>
-                <p><strong>Catégorie :</strong> Code catégorie</p>
-                <p><strong>Clientèle :</strong> Code client</p>
-                <p><strong>Commande :</strong> N° Commande</p>
-                <p><strong>DétailCommande :</strong> Réf produit et N° commande</p>
-            </div>
-        </details>
-
-        <details id="question2">
-            <summary><strong>2) Dans chaque onglet, identifiez quelles sont les colonnes correspondant à des clés étrangères.</strong></summary>
-            <div class="details-content">
-                <p><strong>Produit :</strong> N° fournisseur &amp; Code catégorie</p>
-                <p><strong>Commande :</strong> Code client</p>
-                <p><strong>DétailCommande :</strong> Réf produit &amp; N° commande</p>
-            </div>
-        </details>
-
-        <details id="question3">
-            <summary><strong>3) Réponses aux questions d'analyse des données :</strong></summary>
-            <div class="details-content">
-                <details id="question3a">
-                    <summary><strong>a) Combien y a-t-il de clients nantais ?</strong></summary>
-                    <div class="details-content">
-                        <p>Il y a <strong>3 clients</strong> situés à <strong>Nantes</strong>.</p>
-                    </div>
-                </details>
-
-                <details id="question3b">
-                    <summary><strong>b) Combien y a-t-il de clients de région parisienne ?</strong></summary>
-                    <div class="details-content">
-                        <p>Il y a <strong>5 clients</strong> en <strong>région parisienne</strong>.</p>
-                    </div>
-                </details>
-
-                <details id="question3c">
-                    <summary><strong>c) Donnez l’adresse du fournisseur Marie Delamare?</strong></summary>
-                    <div class="details-content">
-                        <p>L’adresse est : <strong>22 rue H. Voiron, Montceau, 71300, France</strong>.</p>
-                    </div>
-                </details>
-
-                <details id="question3d">
-                    <summary><strong>d) Combien y a-t-il de fournisseurs en Amérique du Nord ?</strong></summary>
-                    <div class="details-content">
-                        <p>Il y a <strong>7 fournisseurs</strong> en <strong>Amérique du Nord</strong>, situés aux <strong>États-Unis</strong> et au <strong>Canada</strong>.</p>
-                        <div class="warning">
-                            <input type="checkbox" id="warning1">
-                            <label for="warning1">Avertissement</label>
-                            <div class="warning-content">
-                                <p><strong>Note :</strong> Les données utilisent à la fois "USA" et "États-Unis", ce qui crée des incohérences. Il faudrait standardiser les noms des pays.</p>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details id="question3e">
-                    <summary><strong>e) Combien y a-t-il de pays dans l’UE autre que la France ?</strong></summary>
-                    <div class="details-content">
-                        <p>Il y a <strong>11 pays</strong> de l'<strong>UE</strong> en dehors de la <strong>France</strong>.</p>
-                    </div>
-                </details>
-
-                <details id="question3f">
-                    <summary><strong>f) Quelle est la fonction du contact fournisseur Ma maison ?</strong></summary>
-                    <div class="details-content">
-                        <p>Le contact pour le fournisseur Ma Maison est un <strong>Directeur du marketing</strong>.</p>
-                    </div>
-                </details>
-
-                <details id="question3g">
-                    <summary><strong>g) Quelle est la fonction de contact fournisseur la plus représentée ?</strong></summary>
-                    <div class="details-content">
-                        <p>La fonction de contact la plus représentée est <strong>Représentant(e)</strong> avec 8 occurrences.</p>
-                        <div class="warning">
-                            <input type="checkbox" id="warning2">
-                            <label for="warning2">Avertissement</label>
-                            <div class="warning-content">
-                                <p><strong>Note :</strong> Il y a des variations orthographiques (Représentant(e), Représentante) qui devraient être harmonisées.</p>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details id="question3h">
-                    <summary><strong>h) Quels produits (nom, catégorie et prix) ont été commandés par le client Mikal Pavbo ?</strong></summary>
-                    <div class="details-content">
-                        <p>Le client <strong>Mikal Pavbo</strong> n'existe pas, mais le client <strong>Mikal</strong> avec le code <strong>PAVBO</strong> a passé les commandes suivantes :</p>
-                        <table class="styled-table">
-                            <thead>
-                                <tr>
-                                    <th>Commande N°</th>
-                                    <th>Produit</th>
-                                    <th>Quantité</th>
-                                    <th>Prix Unitaire</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>11110</td>
-                                    <td>Aniseed Syrup</td>
-                                    <td>6</td>
-                                    <td>10 €</td>
-                                    <td>60 €</td>
-                                </tr>
-                                <tr>
-                                    <td>11110</td>
-                                    <td>Boston Crab Meat</td>
-                                    <td>40</td>
-                                    <td>12,80 €</td>
-                                    <td>512 €</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="warning">
-                            <input type="checkbox" id="warning3">
-                            <label for="warning3">Avertissement</label>
-                            <div class="warning-content">
-                                <p><strong>Note :</strong> Les données contiennent des doublons pour les mêmes commandes et produits, indiquant un possible problème.</p>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details id="question3i">
-                    <summary><strong>i) Quelles sont les dates des commandes du client MORIU ?</strong></summary>
-                    <div class="details-content">
-                        <p>Le client <strong>MORIU</strong> n'existe pas, mais il s'agit probablement de <strong>MORJU</strong>. Dates des commandes :</p>
-                        <ul>
-                            <li>03/12/2020</li>
-                            <li>06/12/2020</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <details id="question3j">
-                    <summary><strong>j) Donnez l’offre de produits suédois.</strong></summary>
-                    <div class="details-content">
-                        <p>Liste des produits suédois :</p>
-                        <table class="styled-table">
-                            <thead>
-                                <tr>
-                                    <th>Produit</th>
-                                    <th>Catégorie</th>
-                                    <th>Quantité</th>
-                                    <th>Prix Unitaire</th>
-                                    <th>Stock</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Tunnbröd</td>
-                                    <td>Pain</td>
-                                    <td>12 cartons (250 g)</td>
-                                    <td>7,50 €</td>
-                                    <td>61</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="warning">
-                            <input type="checkbox" id="warning4">
-                            <label for="warning4">Avertissement</label>
-                            <div class="warning-content">
-                                <p><strong>Note :</strong> Incohérences dans l'orthographe du pays (Suède/Suéde), ce qui peut poser des problèmes.</p>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details id="question3k">
-                    <summary><strong>k) Quelles sont les catégories de produit vendues par les fournisseurs Singapouriens ?</strong></summary>
-                    <div class="details-content">
-                        <p>Catégories :</p>
-                        <ul>
-                            <li><strong>Boissons</strong> : Boissons, cafés, thés, alcools.</li>
-                            <li><strong>Condiments</strong> : Sauces, assaisonnements et épices.</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <details id="question3l">
-                    <summary><strong>l) Est-ce qu’il y a dans la clientèle des clients qui n’ont pas passé de commande ?</strong></summary>
-                    <div class="details-content">
-                        <p>Oui, certains clients n'ont jamais passé de commande, et inversement.</p>
-                        <table class="styled-table">
-                            <thead>
-                                <tr>
-                                    <th>Clients ayant passé une commande</th>
-                                    <th>Clients sans commande</th>
-                                    <th>Clients inexistants ayant passé une commande</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>ALYAD</td>
-                                    <td>ATAUG</td>
-                                    <td>ANBCE</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="warning">
-                            <input type="checkbox" id="warning5">
-                            <label for="warning5">Avertissement</label>
-                            <div class="warning-content">
-                                <p><strong>Note :</strong> Des clients ont passé des commandes sans être dans la liste des clients.</p>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details id="question3m">
-                    <summary><strong>m) Comment sont conditionnés les produits ?</strong></summary>
-                    <div class="details-content">
-                        <p>Les produits sont conditionnés de différentes manières :</p>
-                        <ul>
-                            <li><strong>Boîtes</strong> (e.g., "10 boîtes x 20 sacs")</li>
-                            <li><strong>Bouteilles</strong> (e.g., "24 bouteilles (12 onces)")</li>
-                            <li><strong>Pots</strong> (e.g., "24 pots (250 g)")</li>
-                        </ul>
-                    </div>
-                </details>
-            </div>
-        </details>
-
-        <details id="question4">
-            <summary><strong>4) Problèmes identifiés dans les données.</strong></summary>
-            <div class="details-content">
-                <ul>
-                    <li><strong>Incohérences dans les noms de pays</strong> (USA vs États-Unis).</li>
-                    <li><strong>Variations orthographiques</strong> dans les fonctions de contact.</li>
-                    <li><strong>Réclamations clients</strong> dues à des erreurs de gestion.</li>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mission 1 - SAE 1.04</title>
+        <link rel="stylesheet" href="assets/styles/styles.css">
+    </head>
+    <body id="mission-page">
+        <header>
+            <nav class="navbar">
+                <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+                <label for="menu-toggle" class="menu-icon">&#9776;</label>
+                <a href="index.html" class="nav-logo">SAE 1.04</a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Introduction</a></li>
+                    <li><a href="mission1.html" class="nav-link">Mission 1</a></li>
+                    <li><a href="mission2.html" class="nav-link">Mission 2</a></li>
+                    <li><a href="mission3.html" class="nav-link">Mission 3</a></li>
                 </ul>
-            </div>
-        </details>
+            </nav>
+            <h1>Mission 1 : Contexte et Bilan</h1>
+        </header>
 
-        <details id="question5">
-            <summary><strong>5) Idées d’amélioration de l’organisation des données.</strong></summary>
-            <div class="details-content">
-                <p>Utiliser les filtres d'Excel pour identifier les incohérences, scripts VBA pour automatiser la standardisation, puis migrer vers une base de données relationnelle (Access ou Oracle) pour une gestion plus robuste avec SQL.</p>
-            </div>
-        </details>
+        <section class="content-section">
+            <h2>Contexte</h2>
+            <p>
+                <strong>KDou</strong> est une entreprise spécialisée dans la vente de produits alimentaires d’épicerie fine.
+                Actuellement, elle cherche à renforcer son positionnement <strong>éco-responsable</strong> tout en améliorant sa rentabilité.
+                Notre équipe est chargée de l'analyse des données pour aider KDou à améliorer son image et à optimiser ses opérations.
+            </p>
+        </section>
 
-    </section>
+        <section class="content-section">
+            <h2>Questions et réponses</h2>
 
-    <footer>
-        <p>&copy; Rapport SAE 1.04 Équipe 12D</p>
-    </footer>
-</body>
+            <details id="question1">
+                <summary><strong>1) Dans chaque onglet, identifiez quelles sont les colonnes correspondant ou pouvant correspondre à des clés primaires.</strong></summary>
+                <div class="details-content">
+                    <p><strong>Fournisseur :</strong> N° Fournisseur</p>
+                    <p><strong>Produit :</strong> Réf produit</p>
+                    <p><strong>Catégorie :</strong> Code catégorie</p>
+                    <p><strong>Clientèle :</strong> Code client</p>
+                    <p><strong>Commande :</strong> N° Commande</p>
+                    <p><strong>DétailCommande :</strong> Réf produit et N° commande</p>
+                </div>
+            </details>
+
+            <details id="question2">
+                <summary><strong>2) Dans chaque onglet, identifiez quelles sont les colonnes correspondant à des clés étrangères.</strong></summary>
+                <div class="details-content">
+                    <p><strong>Produit :</strong> N° fournisseur &amp; Code catégorie</p>
+                    <p><strong>Commande :</strong> Code client</p>
+                    <p><strong>DétailCommande :</strong> Réf produit &amp; N° commande</p>
+                </div>
+            </details>
+
+            <details id="question3">
+                <summary><strong>3) Réponses aux questions d'analyse des données :</strong></summary>
+                <div class="details-content">
+                    <details id="question3a">
+                        <summary><strong>a) Combien y a-t-il de clients nantais ?</strong></summary>
+                        <div class="details-content">
+                            <p>Il y a <strong>3 clients</strong> situés à <strong>Nantes</strong>.</p>
+                        </div>
+                    </details>
+
+                    <details id="question3b">
+                        <summary><strong>b) Combien y a-t-il de clients de région parisienne ?</strong></summary>
+                        <div class="details-content">
+                            <p>Il y a <strong>5 clients</strong> en <strong>région parisienne</strong>.</p>
+                        </div>
+                    </details>
+
+                    <details id="question3c">
+                        <summary><strong>c) Donnez l’adresse du fournisseur Marie Delamare?</strong></summary>
+                        <div class="details-content">
+                            <p>L’adresse est : <strong>22 rue H. Voiron, Montceau, 71300, France</strong>.</p>
+                        </div>
+                    </details>
+
+                    <details id="question3d">
+                        <summary><strong>d) Combien y a-t-il de fournisseurs en Amérique du Nord ?</strong></summary>
+                        <div class="details-content">
+                            <p>Il y a <strong>7 fournisseurs</strong> en <strong>Amérique du Nord</strong>, situés aux <strong>États-Unis</strong> et au <strong>Canada</strong>.</p>
+                            <div class="warning">
+                                <input type="checkbox" id="warning1">
+                                <label for="warning1">Avertissement</label>
+                                <div class="warning-content">
+                                    <p><strong>Note :</strong> Les données utilisent à la fois "USA" et "États-Unis", ce qui crée des incohérences. Il faudrait standardiser les noms des pays.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="question3e">
+                        <summary><strong>e) Combien y a-t-il de pays dans l’UE autre que la France ?</strong></summary>
+                        <div class="details-content">
+                            <p>Il y a <strong>11 pays</strong> de l'<strong>UE</strong> en dehors de la <strong>France</strong>.</p>
+                        </div>
+                    </details>
+
+                    <details id="question3f">
+                        <summary><strong>f) Quelle est la fonction du contact fournisseur Ma maison ?</strong></summary>
+                        <div class="details-content">
+                            <p>Le contact pour le fournisseur Ma Maison est un <strong>Directeur du marketing</strong>.</p>
+                        </div>
+                    </details>
+
+                    <details id="question3g">
+                        <summary><strong>g) Quelle est la fonction de contact fournisseur la plus représentée ?</strong></summary>
+                        <div class="details-content">
+                            <p>La fonction de contact la plus représentée est <strong>Représentant(e)</strong> avec 8 occurrences.</p>
+                            <div class="warning">
+                                <input type="checkbox" id="warning2">
+                                <label for="warning2">Avertissement</label>
+                                <div class="warning-content">
+                                    <p><strong>Note :</strong> Il y a des variations orthographiques (Représentant(e), Représentante) qui devraient être harmonisées.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="question3h">
+                        <summary><strong>h) Quels produits (nom, catégorie et prix) ont été commandés par le client Mikal Pavbo ?</strong></summary>
+                        <div class="details-content">
+                            <p>Le client <strong>Mikal Pavbo</strong> n'existe pas, mais le client <strong>Mikal</strong> avec le code <strong>PAVBO</strong> a passé les commandes suivantes :</p>
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Commande N°</th>
+                                        <th>Produit</th>
+                                        <th>Quantité</th>
+                                        <th>Prix Unitaire</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>11110</td>
+                                        <td>Aniseed Syrup</td>
+                                        <td>6</td>
+                                        <td>10 €</td>
+                                        <td>60 €</td>
+                                    </tr>
+                                    <tr>
+                                        <td>11110</td>
+                                        <td>Boston Crab Meat</td>
+                                        <td>40</td>
+                                        <td>12,80 €</td>
+                                        <td>512 €</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="warning">
+                                <input type="checkbox" id="warning3">
+                                <label for="warning3">Avertissement</label>
+                                <div class="warning-content">
+                                    <p><strong>Note :</strong> Les données contiennent des doublons pour les mêmes commandes et produits, indiquant un possible problème.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="question3i">
+                        <summary><strong>i) Quelles sont les dates des commandes du client MORIU ?</strong></summary>
+                        <div class="details-content">
+                            <p>Le client <strong>MORIU</strong> n'existe pas, mais il s'agit probablement de <strong>MORJU</strong>. Dates des commandes :</p>
+                            <ul>
+                                <li>03/12/2020</li>
+                                <li>06/12/2020</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details id="question3j">
+                        <summary><strong>j) Donnez l’offre de produits suédois.</strong></summary>
+                        <div class="details-content">
+                            <p>Liste des produits suédois :</p>
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Produit</th>
+                                        <th>Catégorie</th>
+                                        <th>Quantité</th>
+                                        <th>Prix Unitaire</th>
+                                        <th>Stock</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tunnbröd</td>
+                                        <td>Pain</td>
+                                        <td>12 cartons (250 g)</td>
+                                        <td>7,50 €</td>
+                                        <td>61</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="warning">
+                                <input type="checkbox" id="warning4">
+                                <label for="warning4">Avertissement</label>
+                                <div class="warning-content">
+                                    <p><strong>Note :</strong> Incohérences dans l'orthographe du pays (Suède/Suéde), ce qui peut poser des problèmes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="question3k">
+                        <summary><strong>k) Quelles sont les catégories de produit vendues par les fournisseurs Singapouriens ?</strong></summary>
+                        <div class="details-content">
+                            <p>Catégories :</p>
+                            <ul>
+                                <li><strong>Boissons</strong> : Boissons, cafés, thés, alcools.</li>
+                                <li><strong>Condiments</strong> : Sauces, assaisonnements et épices.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details id="question3l">
+                        <summary><strong>l) Est-ce qu’il y a dans la clientèle des clients qui n’ont pas passé de commande ?</strong></summary>
+                        <div class="details-content">
+                            <p>Oui, certains clients n'ont jamais passé de commande, et inversement.</p>
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Clients ayant passé une commande</th>
+                                        <th>Clients sans commande</th>
+                                        <th>Clients inexistants ayant passé une commande</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ALYAD</td>
+                                        <td>ATAUG</td>
+                                        <td>ANBCE</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="warning">
+                                <input type="checkbox" id="warning5">
+                                <label for="warning5">Avertissement</label>
+                                <div class="warning-content">
+                                    <p><strong>Note :</strong> Des clients ont passé des commandes sans être dans la liste des clients.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details id="question3m">
+                        <summary><strong>m) Comment sont conditionnés les produits ?</strong></summary>
+                        <div class="details-content">
+                            <p>Les produits sont conditionnés de différentes manières :</p>
+                            <ul>
+                                <li><strong>Boîtes</strong> (e.g., "10 boîtes x 20 sacs")</li>
+                                <li><strong>Bouteilles</strong> (e.g., "24 bouteilles (12 onces)")</li>
+                                <li><strong>Pots</strong> (e.g., "24 pots (250 g)")</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </details>
+
+            <details id="question4">
+                <summary><strong>4) Problèmes identifiés dans les données.</strong></summary>
+                <div class="details-content">
+                    <ul>
+                        <li><strong>Incohérences dans les noms de pays</strong> (USA vs États-Unis).</li>
+                        <li><strong>Variations orthographiques</strong> dans les fonctions de contact.</li>
+                        <li><strong>Réclamations clients</strong> dues à des erreurs de gestion.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details id="question5">
+                <summary><strong>5) Idées d’amélioration de l’organisation des données.</strong></summary>
+                <div class="details-content">
+                    <p>Utiliser les filtres d'Excel pour identifier les incohérences, scripts VBA pour automatiser la standardisation, puis migrer vers une base de données relationnelle (Access ou Oracle) pour une gestion plus robuste avec SQL.</p>
+                </div>
+            </details>
+
+        </section>
+
+        <footer>
+            <p>&copy; Rapport SAE 1.04 Équipe 12D</p>
+        </footer>
+    </body>
 </html>
