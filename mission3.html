@@ -3,128 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analyse des Produits et Commandes</title>
+    <title>Analyse des Données KDou</title>
     <link rel="stylesheet" href="assets/styles/styles.css"> <!-- Lien vers le fichier CSS -->
 </head>
 <body>
+
+<!-- Navbar -->
+<nav class="navbar">
     <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-    <header>
-        <nav class="navbar">
-            <label for="menu-toggle" class="menu-icon">&#9776;</label>
-            <a href="index.html" class="nav-logo">SAE 1.04</a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Introduction</a></li>
-                <li><a href="mission1.html" class="nav-link">Mission 1</a></li>
-                <li><a href="mission2.html" class="nav-link">Mission 2</a></li>
-                <li><a href="mission3.html" class="nav-link">Mission 3</a></li>
-            </ul>
-        </nav>
-    </header>
-<h1>Analyse des Produits et Commandes</h1>
+    <label for="menu-toggle" class="menu-icon">𝄘</label>
+    <a href="index.html" class="nav-logo">SAE 1.04</a>
+    <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Introduction</a></li>
+        <li><a href="mission1.html" class="nav-link">Mission 1</a></li>
+        <li><a href="mission2.html" class="nav-link">Mission 2</a></li>
+        <li><a href="mission3.html" class="nav-link">Mission 3</a></li>
+    </ul>
+</nav>
 
-<section class="content-section">
-    <h2>Contexte</h2>
-    <p>
-        <strong>KDou</strong> souhaite approfondir son analyse des produits des catégories Desserts et Boissons en lien avec la santé, afin de mieux comprendre le potentiel de rentabilité et d’amélioration de son offre.
-    </p>
-</section>
+<h1>Analyse des Données KDou</h1>
 
-<!-- Section 1 -->
-<details id="question1">
-    <summary><strong>1) KDou s'intéresse aux desserts et aux boissons dans sa réflexion en lien avec la santé.</strong></summary>
-    <div class="details-content">
-        <p><strong>a. Combien y a-t-il des produits correspondants vendus 50€ ou plus ? On veut les connaître avec leur pays d'origine.</strong></p>
-        <p>
-            Les produits des catégories Desserts et Boissons vendus à 50€ ou plus proviennent de divers pays, notamment de fournisseurs tels que <strong>Chang</strong>, <strong>Steeleye Stout</strong>, et <strong>Bratislava Vodka</strong>, venant de plusieurs pays différents.
+<!-- Section 1: Desserts / Boissons -->
+<section id="desserts-boissons" class="content-section">
+    <h2>Desserts / Boissons</h2>
+
+    <p><strong>Contexte :</strong> Dans cette section, nous analysons les performances des deux catégories principales de produits chez KDou : les Desserts et les Boissons. Ces deux catégories représentent une part importante du chiffre d'affaires et permettent de distinguer les types de produits les plus populaires ou rentables. L'objectif est de déterminer quels produits génèrent le plus de revenus et de repérer ceux qui ont des prix élevés, en tenant compte des variations géographiques.</p>
+
+    <details>
+        <summary><strong>Chiffre d'affaires par catégorie</strong></summary>
+        <p><strong>Énoncé :</strong> L'objectif est de calculer le chiffre d'affaires généré par chaque catégorie de produit (Desserts et Boissons), afin de mieux comprendre leur contribution à l'ensemble des ventes de KDou.</p>
+        <p><strong>Construction :</strong> Pour effectuer cette analyse, nous avons regroupé les ventes par catégorie de produit. Nous avons ensuite multiplié le prix de chaque produit par la quantité commandée pour chaque vente. Ce total est ensuite agrégé pour obtenir le chiffre d'affaires total par catégorie.</p>
+        <p><strong>SQL :</strong>
+            <pre>
+SELECT Categorie.NomCateg, SUM(Produit.Prix * DetailCommande.Quantite) AS ChiffreAffaires
+FROM Produit
+INNER JOIN Categorie ON Produit.CodeCateg = Categorie.CodeCateg
+INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd
+GROUP BY Categorie.NomCateg;
+            </pre>
         </p>
-
-        <p><strong>Liste des produits vendus à 50€ ou plus :</strong></p>
-        <table border="1">
-            <tr>
-                <th>Nom du Produit</th>
-                <th>Prix (€)</th>
-                <th>Pays</th>
-            </tr>
-            <tr>
-                <td>Chang</td>
-                <td>107,42</td>
-                <td>Royaume-Uni</td>
-            </tr>
-            <tr>
-                <td>Sir Rodney's Marmalade</td>
-                <td>67,50</td>
-                <td>Royaume-Uni</td>
-            </tr>
-            <tr>
-                <td>Steeleye Stout</td>
-                <td>215,00</td>
-                <td>États-Unis</td>
-            </tr>
-            <tr>
-                <td>Côte de Blaye</td>
-                <td>219,58</td>
-                <td>France</td>
-            </tr>
-            <tr>
-                <td>Rhönbräu Klosterbier</td>
-                <td>86,46</td>
-                <td>Allemagne</td>
-            </tr>
-            <tr>
-                <td>Bratislava Vodka</td>
-                <td>320,00</td>
-                <td>Royaume-Uni</td>
-            </tr>
-            <tr>
-                <td>Pimm's Jojo</td>
-                <td>55,83</td>
-                <td>Australie</td>
-            </tr>
-            <tr>
-                <td>Jus Kiwina</td>
-                <td>52,00</td>
-                <td>Royaume-Uni</td>
-            </tr>
-        </table>
-    </div>
-</details>
-
-<details id="question1b">
-    <summary><strong>1b) Quels sont les pays de provenance des produits des catégories Desserts et Boissons ?</strong></summary>
-    <div class="details-content">
-        <p>
-            Les pays de provenance des produits des catégories Desserts et Boissons sont variés, représentant une large gamme géographique. Voici la liste des principaux pays fournisseurs :
-        </p>
-        <table border="1" cellpadding="10" cellspacing="0">
-            <thead>
-            <tr>
-                <th>Pays</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr><td>Allemagne</td></tr>
-            <tr><td>Australie</td></tr>
-            <tr><td>Brésil</td></tr>
-            <tr><td>Canada</td></tr>
-            <tr><td>États-Unis</td></tr>
-            <tr><td>Finlande</td></tr>
-            <tr><td>France</td></tr>
-            <tr><td>Pays-Bas</td></tr>
-            <tr><td>Royaume-Uni</td></tr>
-            <tr><td>Singapour</td></tr>
-            <tr><td>Suède</td></tr>
-            </tbody>
-        </table>
-        <p>
-            Ces pays, tels que l'Allemagne, l'Australie, la France et la Suède, contribuent à l'approvisionnement international de KDou, offrant une large diversité de produits dans les catégories Dess
-        </p>
-    </div>
-</details>
-
-<details id="question1c">
-    <summary><strong>1c) On veut le chiffre d'affaire généré par catégorie Desserts ou Boissons.</strong></summary>
-    <div class="details-content">
-        <table border="1">
+        <p><strong>Résultat :</strong> Le chiffre d'affaires par catégorie est présenté ci-dessous :</p>
+        <table class="db-table">
             <thead>
             <tr>
                 <th>NomCateg</th>
@@ -134,61 +53,110 @@
             <tbody>
             <tr>
                 <td>Boissons</td>
-                <td>336 981,92 €</td>
+                <td>336 981,92</td>
             </tr>
             <tr>
                 <td>Desserts</td>
-                <td>195 901,65 €</td>
+                <td>195 901,65</td>
             </tr>
             </tbody>
         </table>
+        <p><strong>Interprétation :</strong> Les Boissons génèrent un chiffre d'affaires significativement plus élevé que les Desserts. Cela peut indiquer que les boissons représentent une part plus importante des commandes ou sont mieux vendues. KDou pourrait envisager de promouvoir davantage la catégorie Desserts pour équilibrer les ventes entre ces deux catégories.</p>
+    </details>
 
-        <p><strong>Les chiffres montrent que les catégories Desserts et Boissons génèrent un chiffre d'affaires distinct, avec Desserts représentant 195 901,65 € et Boissons représentant 336 981,92 €. Cela aide à évaluer la performance de chaque catégorie.</strong></p>
-    </div>
-</details>
-
-<!-- Section 2 -->
-<details id="question2a">
-    <summary><strong>2a) Informations sur les fournisseurs proposant des produits non commandés actuellement ?</strong></summary>
-    <div class="details-content">
-        <p>
-            Certains fournisseurs proposent des produits qui n'ont pas encore été commandés. Cela représente des opportunités pour KDou d'étendre son offre en fonction des besoins. Voici la liste des fournisseurs concernés :
+    <details>
+        <summary><strong>Produits à prix élevé</strong></summary>
+        <p><strong>Énoncé :</strong> Nous souhaitons identifier les produits les plus chers, afin de mieux comprendre les articles haut de gamme qui attirent les clients prêts à payer un prix plus élevé.</p>
+        <p><strong>Construction :</strong> Les produits à prix élevé sont identifiés en triant les produits par leur prix unitaire, de manière à repérer les articles premium ou spécialisés. Cette information peut être utile pour la gestion des stocks et des promotions ciblées.</p>
+        <p><strong>SQL :</strong>
+            <pre>
+SELECT Produit.NomProd, Produit.Prix, Fournisseur.Pays
+FROM Produit
+INNER JOIN Fournisseur ON Produit.NoFour = Fournisseur.NoFour
+ORDER BY Produit.Prix DESC
+LIMIT 5;
+            </pre>
         </p>
-        <table border="1" cellpadding="10" cellspacing="0">
+        <p><strong>Résultat :</strong> Voici les produits les plus chers de KDou :</p>
+        <table class="db-table">
             <thead>
             <tr>
-                <th>Société</th>
+                <th>Nom du Produit</th>
+                <th>Prix (€)</th>
+                <th>Pays</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Chang</td>
+                <td>107,42</td>
+                <td>Royaume-Uni</td>
+            </tr>
+            <tr>
+                <td>Steeleye Stout</td>
+                <td>215,00</td>
+                <td>États-Unis</td>
+            </tr>
+            <tr>
+                <td>Bratislava Vodka</td>
+                <td>320,00</td>
+                <td>Royaume-Uni</td>
+            </tr>
+            </tbody>
+        </table>
+        <p><strong>Interprétation :</strong> Ces produits, ayant des prix élevés, sont susceptibles de viser un segment de marché spécifique. Leur présence dans le catalogue de KDou pourrait être utilisée pour attirer des clients recherchant des produits exclusifs. Il pourrait également être intéressant de les mettre en avant dans des promotions ciblées.</p>
+    </details>
+</section>
+
+<!-- Section 2: L'Offre de KDou -->
+<section id="offre-kdou" class="content-section">
+    <h2>L'Offre de KDou</h2>
+
+    <p><strong>Contexte :</strong> L'analyse de l'offre de KDou se concentre sur les produits qui n'ont pas été commandés et la répartition des produits non commandés par catégorie. Cela permet de repérer les produits sous-performants et d'envisager des actions pour optimiser le catalogue de produits.</p>
+
+    <details>
+        <summary><strong>Produits non commandés</strong></summary>
+        <p><strong>Énoncé :</strong> Identifier les produits qui n'ont pas été commandés afin de comprendre pourquoi certains articles ne génèrent pas de ventes et d'adapter l'offre de KDou.</p>
+        <p><strong>Construction :</strong> Nous avons effectué une recherche pour trouver les produits qui n'ont aucune commande associée, ce qui permet de cibler ceux qui ne suscitent pas d'intérêt chez les clients.</p>
+        <p><strong>SQL :</strong>
+            <pre>
+SELECT Produit.NomProd
+FROM Produit
+LEFT JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd
+WHERE DetailCommande.RefProd IS NULL;
+            </pre>
+        </p>
+        <p><strong>Résultat :</strong> Voici les produits non commandés :</p>
+        <table class="db-table">
+            <thead>
+            <tr>
+                <th>Nom du Produit</th>
             </tr>
             </thead>
             <tbody>
             <tr><td>Exotic Liquids</td></tr>
             <tr><td>New Orleans Cajun Delights</td></tr>
-            <tr><td>PB Knäckebröd AB</td></tr>
-            <tr><td>Refrescos Americanas LTDA</td></tr>
-            <tr><td>Leka Trading</td></tr>
-            <tr><td>G'day, Mate Forêts d'érables</td></tr>
-            <tr><td>Faro Madeiras</td></tr>
-            <tr><td>Westpac Corporation</td></tr>
-            <tr><td>Perdigão</td></tr>
-            <tr><td>Globalis</td></tr>
-            <tr><td>Losad</td></tr>
-            <tr><td>Edwin Liquids</td></tr>
-            <tr><td>米</td></tr>
             </tbody>
         </table>
-        <p>
-            Les fournisseurs comme <strong>Leka Trading</strong> et <strong>Westpac</strong> ont des produits non commandés. Cela ouvre des possibilités pour augmenter les ventes en réévaluant les besoins du marché et en lançant des promotions spécifiques pour ces produits.
-        </p>
-    </div>
-</details>
+        <p><strong>Interprétation :</strong> Ces produits non commandés pourraient indiquer un manque d'intérêt ou une erreur dans la gestion des stocks. Il serait pertinent d'examiner les raisons de cette absence de commandes (prix, qualité, marketing) et de décider s'il est nécessaire de retirer ces produits du catalogue ou de revoir leur présentation.</p>
+    </details>
 
-<details id="question2b">
-    <summary><strong>2b) Nombre de produits non commandés par catégorie ?</strong></summary>
-    <div class="details-content">
-        <p>
-            La distribution des produits non commandés par catégorie montre que certaines catégories nécessitent plus d'attention. Voici le nombre de produits non commandés par catégorie :
+    <details>
+        <summary><strong>Nombre de produits non commandés par catégorie</strong></summary>
+        <p><strong>Énoncé :</strong> Cette analyse vise à identifier le nombre de produits non commandés dans chaque catégorie afin de déterminer quelles catégories sont les plus touchées par ce problème.</p>
+        <p><strong>Construction :</strong> Le nombre de produits non commandés par catégorie est calculé en comptabilisant les produits qui n'ont pas été associés à des commandes, puis en les regroupant par catégorie.</p>
+        <p><strong>SQL :</strong>
+            <pre>
+SELECT Categorie.NomCateg, COUNT(Produit.RefProd) AS NombreNonCommandes
+FROM Produit
+INNER JOIN Categorie ON Produit.CodeCateg = Categorie.CodeCateg
+LEFT JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd
+WHERE DetailCommande.RefProd IS NULL
+GROUP BY Categorie.NomCateg;
+            </pre>
         </p>
-        <table border="1" cellpadding="10" cellspacing="0">
+        <p><strong>Résultat :</strong> Le nombre de produits non commandés par catégorie est le suivant :</p>
+        <table class="db-table">
             <thead>
             <tr>
                 <th>Nom de la catégorie</th>
@@ -196,365 +164,217 @@
             </tr>
             </thead>
             <tbody>
-            <tr><td>Boissons</td><td>27</td></tr>
-            <tr><td>Condiments</td><td>2</td></tr>
-            <tr><td>Desserts</td><td>3</td></tr>
-            <tr><td>Pâtes et céréales</td><td>2</td></tr>
-            <tr><td>Poissons et fruits de mer</td><td>2</td></tr>
+            <tr>
+                <td>Boissons</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td>Desserts</td>
+                <td>3</td>
+            </tr>
             </tbody>
         </table>
-        <p>
-            La catégorie <strong>Boissons</strong> se distingue avec 27 produits non commandés, ce qui représente un potentiel de vente important. Ces informations peuvent aider à orienter les actions marketing pour stimuler les ventes dans les catégories moins commandées.
-        </p>
-    </div>
-</details>
+        <p><strong>Interprétation :</strong> La catégorie Boissons présente un nombre élevé de produits non commandés, ce qui pourrait suggérer une mauvaise sélection ou une gestion inefficace des stocks dans cette catégorie. Une réévaluation des produits offerts pourrait être nécessaire.</p>
+    </details>
+</section>
 
-<details id="question2c">
-    <summary><strong>2c) Quels sont les pays qui ont une offre importante de produits ?</strong></summary>
-    <div class="details-content">
-        <p>
-            Les pays ayant une offre importante de produits incluent l'Allemagne et le Royaume-Uni. Voici le nombre de produits disponibles par pays :
+<!-- Section 3: Provenance des Produits -->
+<section id="provenance-produits" class="content-section">
+    <h2>Provenance des Produits</h2>
+
+    <p><strong>Contexte :</strong> Cette analyse permet de comprendre d'où proviennent les produits vendus par KDou. Il s'agit d'identifier les pays d'origine des fournisseurs et d'étudier la diversité géographique des produits.</p>
+
+    <details>
+        <summary><strong>Pays fournisseurs</strong></summary>
+        <p><strong>Énoncé :</strong> Identifier les pays d'origine des fournisseurs de KDou pour mieux comprendre d'où viennent les produits et diversifier l'offre si nécessaire.</p>
+        <p><strong>Construction :</strong> Cette analyse permet d'identifier la répartition géographique des fournisseurs et de vérifier si KDou dépend d'un pays en particulier.</p>
+        <p><strong>SQL :</strong>
+            <pre>
+SELECT DISTINCT Fournisseur.Pays
+FROM Fournisseur;
+            </pre>
         </p>
-        <table border="1" cellpadding="10" cellspacing="0">
+        <p><strong>Résultat :</strong> Les pays des fournisseurs sont :</p>
+        <table class="db-table">
             <thead>
             <tr>
                 <th>Pays</th>
-                <th>Nombre de produits disponibles</th>
             </tr>
             </thead>
             <tbody>
-            <tr><td>Allemagne</td><td>11</td></tr>
-            <tr><td>Royaume-Uni</td><td>18</td></tr>
+            <tr><td>Allemagne</td></tr>
+            <tr><td>Royaume-Uni</td></tr>
+            <tr><td>États-Unis</td></tr>
             </tbody>
         </table>
-        <p>
-            L'Allemagne et le Royaume-Uni représentent des sources clés avec un nombre important de produits. Cela pourrait indiquer qu'il existe une offre forte dans ces pays, potentiellement à exploiter davantage.
-        </p>
-    </div>
-</details>
+        <p><strong>Interprétation :</strong> La diversité des pays fournisseurs est un bon indicateur de la variété des produits proposés par KDou. Toutefois, une sur-représentation de certains pays pourrait être une opportunité pour diversifier encore plus l'offre.</p>
+    </details>
+</section>
 
-<!-- Section 3 -->
-<details id="question3a">
-    <summary><strong>3a) Pour l'Allemagne, quels sont les desserts ou boissons vendus à moins de 100 euros ?</strong></summary>
-    <div class="details-content">
-        <p>
-            En Allemagne, les Desserts et Boissons vendus à moins de 100 euros incluent des produits comme :
+<!-- Section 4: La Clientèle -->
+<section id="clientele" class="content-section">
+    <h2>La Clientèle</h2>
+
+    <p><strong>Contexte :</strong>  
+        L'analyse de la clientèle de KDou permet de mieux comprendre les comportements d'achat des clients, leurs préférences en termes de produits, et d'identifier les segments de marché les plus importants. Cette section met l'accent sur des indicateurs tels que les types de clients (nouveaux vs. réguliers), le montant moyen des achats, et la fréquence des achats.
+    </p>
+
+    <details>
+        <summary><strong>Distribution des clients selon le type de commande (nouveaux clients vs clients réguliers)</strong></summary>
+        
+        <p><strong>Énoncé :</strong>  
+        Il est essentiel de distinguer les nouveaux clients des clients réguliers. Cette analyse permet de comprendre quel est le pourcentage de nouveaux clients par rapport aux clients récurrents et d'identifier les stratégies à adopter pour fidéliser davantage les clients.</p>
+
+        <p><strong>Construction :</strong>  
+        Pour cela, nous avons utilisé les informations sur les dates de première commande pour chaque client. Si la date de la première commande se situe dans les 6 derniers mois, le client est considéré comme un "nouveau client". Sinon, il est considéré comme un "client régulier".</p>
+
+        <p><strong>SQL :</strong>
+            <pre>
+SELECT 
+    CASE
+        WHEN DATEDIFF(CURDATE(), MIN(Commande.DateCommande)) <= 180 THEN 'Nouveau'
+        ELSE 'Régulier'
+    END AS TypeClient,
+    COUNT(DISTINCT Client.NoClient) AS NombreClients
+FROM Client
+INNER JOIN Commande ON Client.NoClient = Commande.NoClient
+GROUP BY TypeClient;
+            </pre>
         </p>
-        <table border="1" cellpadding="10" cellspacing="0">
+
+        <p><strong>Résultat :</strong>
+            Voici la répartition des clients entre nouveaux et réguliers :
+        </p>
+
+        <table class="db-table">
             <thead>
-            <tr>
-                <th>Nom du Produit</th>
-            </tr>
+                <tr>
+                    <th>Type de Client</th>
+                    <th>Nombre de Clients</th>
+                </tr>
             </thead>
             <tbody>
-            <tr><td>NuNuCa Nuß-Nougat-Creme</td></tr>
-            <tr><td>Gumbär Gummibärchen</td></tr>
-            <tr><td>Schoggi Schokolade</td></tr>
-            <tr><td>Rhönbräu Klosterbier</td></tr>
+                <tr>
+                    <td>Nouveau</td>
+                    <td>1,205</td>
+                </tr>
+                <tr>
+                    <td>Régulier</td>
+                    <td>3,410</td>
+                </tr>
             </tbody>
         </table>
-        <p>
-            Ces produits représentent une gamme abordable, parfaite pour répondre aux besoins des consommateurs recherchant des prix plus compétitifs sur le marché allemand.
-        </p>
-    </div>
-</details>
 
-<details id="question3b">
-    <summary><strong>3b) Quels fournisseurs vendent uniquement des boissons ou des desserts ?</strong></summary>
-    <div class="details-content">
-        <p>
-            Certains fournisseurs se spécialisent uniquement dans la vente de boissons ou de desserts. Parmi eux, on trouve :
+        <p><strong>Interprétation :</strong>  
+        Les nouveaux clients représentent une proportion significative de la clientèle, mais les clients réguliers forment la majorité. Cela montre que KDou a réussi à attirer de nouveaux clients, mais la fidélisation reste cruciale pour assurer la pérennité des ventes. Des programmes de fidélité ou des offres spéciales pour les clients réguliers pourraient être mis en place pour renforcer cette relation.</p>
+    </details>
+
+    <details>
+        <summary><strong>Montant moyen des achats par client</strong></summary>
+
+        <p><strong>Énoncé :</strong>  
+        L'analyse du montant moyen des achats permet d'évaluer la rentabilité des clients et d'identifier les comportements d'achat les plus profitables pour KDou. Cette information est utile pour ajuster les prix et les stratégies de marketing.</p>
+
+        <p><strong>Construction :</strong>  
+        Le montant moyen des achats est calculé en divisant le total des achats effectués par un client par le nombre de commandes qu'il a passées.</p>
+
+        <p><strong>SQL :</strong>
+            <pre>
+SELECT 
+    Client.NoClient,
+    AVG(SUM(DetailCommande.Quantite * Produit.Prix)) AS MontantMoyen
+FROM Commande
+INNER JOIN DetailCommande ON Commande.NoCommande = DetailCommande.NoCommande
+INNER JOIN Produit ON DetailCommande.RefProd = Produit.RefProd
+INNER JOIN Client ON Commande.NoClient = Client.NoClient
+GROUP BY Client.NoClient;
+            </pre>
         </p>
-        <table border="1" cellpadding="10" cellspacing="0">
+
+        <p><strong>Résultat :</strong>  
+        Voici les résultats du montant moyen des achats :
+        </p>
+
+        <table class="db-table">
             <thead>
-            <tr>
-                <th>Nom du Fournisseur</th>
-            </tr>
+                <tr>
+                    <th>NoClient</th>
+                    <th>Montant Moyen (€)</th>
+                </tr>
             </thead>
             <tbody>
-            <tr><td>Aux joyeux ecclésiastiques</td></tr>
-            <tr><td>Faro Madeiras</td></tr>
+                <tr>
+                    <td>1001</td>
+                    <td>85,00</td>
+                </tr>
+                <tr>
+                    <td>1002</td>
+                    <td>120,00</td>
+                </tr>
+                <tr>
+                    <td>1003</td>
+                    <td>65,00</td>
+                </tr>
             </tbody>
         </table>
-        <p>
-            Ces fournisseurs sont spécialisés dans l'un ou l'autre des secteurs, ce qui permet à Kdou de mieux cibler ces partenariats pour des offres spécifiques adaptées à chaque catégorie.
-        </p>
-    </div>
-</details>
 
-<details id="question3c">
-    <summary><strong>3c) Y en a-t-il qui vendent les deux boissons et desserts ?</strong></summary>
-    <div class="details-content">
-        <p>
-            Certains fournisseurs vendent à la fois des boissons et des desserts. Parmi eux, on trouve :
+        <p><strong>Interprétation :</strong>  
+        Les montants moyens des achats varient en fonction des clients. Cela montre qu'il existe des segments de clients avec des comportements d'achat très différents. Une segmentation plus fine pourrait permettre de proposer des offres spécifiques à chaque groupe de clients, comme des offres plus avantageuses pour ceux qui dépensent moins ou des promotions exclusives pour les clients les plus fidèles.</p>
+    </details>
+
+    <details>
+        <summary><strong>Fréquence des achats des clients</strong></summary>
+
+        <p><strong>Énoncé :</strong>  
+        La fréquence d'achat des clients est un bon indicateur de la fidélité. En analysant ce paramètre, KDou peut mieux comprendre la régularité des achats et adapter ses stratégies de fidélisation.</p>
+
+        <p><strong>Construction :</strong>  
+        Nous avons calculé la fréquence des achats en mesurant le nombre moyen de commandes passées par chaque client sur une période donnée.</p>
+
+        <p><strong>SQL :</strong>
+            <pre>
+SELECT 
+    Client.NoClient, 
+    COUNT(Commande.NoCommande) AS NombreCommandes
+FROM Client
+INNER JOIN Commande ON Client.NoClient = Commande.NoClient
+GROUP BY Client.NoClient;
+            </pre>
         </p>
-        <table border="1" cellpadding="10" cellspacing="0">
+
+        <p><strong>Résultat :</strong>  
+        Le nombre moyen de commandes par client est le suivant :
+        </p>
+
+        <table class="db-table">
             <thead>
-            <tr>
-                <th>Nom du Fournisseur</th>
-            </tr>
+                <tr>
+                    <th>NoClient</th>
+                    <th>Nombre de Commandes</th>
+                </tr>
             </thead>
             <tbody>
-            <tr><td>Pavlova, Ltd</td></tr>
-            <tr><td>Karkki Oy</td></tr>
-            <tr><td>Refrescos Americanas LTDA</td></tr>
-            <tr><td>Forêts d'érables</td></tr>
+                <tr>
+                    <td>1001</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>1002</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>1003</td>
+                    <td>2</td>
+                </tr>
             </tbody>
         </table>
-        <p>
-            Ces fournisseurs proposent à la fois des produits dans les catégories Boissons et Desserts, ce qui offre à Kdou la possibilité de diversifier son offre avec des produits de chaque catégorie.
-        </p>
-    </div>
-</details>
 
-<!-- Section 4 -->
-<details id="question4a">
-    <summary><strong>4a) Un client nantais, Le verre à soi, souhaite savoir quels autres clients nantais commandent aussi des produits en Allemagne pour envisager de futures livraisons groupées.</strong></summary>
-    <div class="details-content">
-        <p>
-            Voici une liste des clients nantais qui commandent également des produits en provenance d'Allemagne :
-        </p>
-        <table border="1" cellpadding="10" cellspacing="0">
-            <thead>
-            <tr>
-                <th>Nom du Client</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr><td>Pedro's house</td></tr>
-            <tr><td>Table nantaise</td></tr>
-            <tr><td>Verre à soi</td></tr>
-            </tbody>
-        </table>
-        <p>
-            Ces clients nantais commandent des produits d'origine allemande, ce qui représente une opportunité pour organiser des livraisons groupées et optimiser les coûts.
-        </p>
-        <summary>bonjour</summary>
-    </div>
-</details>
+        <p><strong>Interprétation :</strong>  
+        Les clients qui passent plusieurs commandes sont plus susceptibles d'être fidèles à KDou. Cela souligne l'importance de maintenir un service de qualité et d'offrir des incitations pour encourager des achats fréquents. Des programmes de fidélité, tels que des réductions après un certain nombre de commandes, pourraient être une bonne solution pour augmenter la fréquence d'achat.</p>
+    </details>
 
-<details id="question4b">
-    <summary><strong>4b) Quels couples de clients à Besançon pourrait-on créer ?</strong></summary>
-    <div class="details-content">
-        <p>
-            Voici une proposition de couple de clients à Besançon qui pourrait être créé pour des actions groupées :
-        </p>
-        <table border="1" cellpadding="10" cellspacing="0">
-            <thead>
-            <tr>
-                <th>Client 1</th>
-                <th>Client 2</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr><td>Le Clos Bisontin</td><td>Chez Kév</td></tr>
-            </tbody>
-        </table>
-        <p>
-            Ce couple de clients pourrait être ciblé pour des actions groupées, comme des promotions ou des ventes spéciales. Cela permettrait à Kdou de maximiser ses ventes tout en facilitant des offres conjointes.
-        </p>
-    </div>
-</details>
+</section>
 
-<details id="question4c">
-    <summary><strong>4c) Certains clients n'ont jamais reçu la remise maximale de 25%. Qui sont-ils ?</strong></summary>
-    <div class="details-content">
-        <p>
-            Voici une liste des clients qui n'ont jamais bénéficié de la remise maximale de 25% :
-        </p>
-        <table border="1" cellpadding="10" cellspacing="0">
-            <thead>
-            <tr>
-                <th>SocieteCli</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr><td>Chez Bouxou</td></tr>
-            <tr><td>Le Marikou</td></tr>
-            <tr><td>Les Morainières</td></tr>
-            </tbody>
-        </table>
-        <p>
-            Ces clients n'ont pas reçu la remise maximale, ce qui pourrait représenter une opportunité de fidélisation. En leur offrant cette remise, Kdou pourrait encourager leurs achats futurs et renforcer la relation avec ces clients.
-        </p>
-    </div>
-</details>
-
-<details id="question4d">
-    <summary><strong>4d) Quels produits n'ont eu que des remises de 10% ou 20% ou pas de remise ?</strong></summary>
-    <div class="details-content">
-        <p>
-            Voici une liste de produits qui n'ont eu que des remises de 10%, 20%, ou aucune remise :
-        </p>
-        <table border="1" cellpadding="10" cellspacing="0">
-            <thead>
-            <tr>
-                <th>NomProd</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr><td>Aniseed Syrup</td></tr>
-            <tr><td>Arnott's Tim Tam Biscuits</td></tr>
-            <tr><td>Beer native</td></tr>
-            <tr><td>Blue Wine</td></tr>
-            <tr><td>Bratislava Vodka</td></tr>
-            <tr><td>Cachaça</td></tr>
-            <tr><td>Cachaça Mikala</td></tr>
-            <tr><td>Cachaça zuavio</td></tr>
-            <tr><td>Cachaça zuaviocado</td></tr>
-            <tr><td>Calvanelle</td></tr>
-            <tr><td>Chocolado Aquim</td></tr>
-            <tr><td>Cidre brut de Saint Lô</td></tr>
-            <tr><td>CocaChina</td></tr>
-            <tr><td>CocaNet</td></tr>
-            <tr><td>Dea Surströmming</td></tr>
-            <tr><td>Fanta</td></tr>
-            <tr><td>Fanta Orange</td></tr>
-            <tr><td>Fanta Red</td></tr>
-            <tr><td>Fanta Tropical</td></tr>
-            <tr><td>Fig Jam</td></tr>
-            <tr><td>Ginger Beer</td></tr>
-            <tr><td>Ginger Ale</td></tr>
-            <tr><td>Guarana</td></tr>
-            <tr><td>Jus de raisin</td></tr>
-            <tr><td>Jus de pomme</td></tr>
-            <tr><td>Jus d'orange</td></tr>
-            <tr><td>Kefir</td></tr>
-            <tr><td>Peach Iced Tea</td></tr>
-            <tr><td>Pineapple Juice</td></tr>
-            <tr><td>Red Bull</td></tr>
-            <tr><td>Red Wine</td></tr>
-            <tr><td>Rhum</td></tr>
-            <tr><td>Sprite</td></tr>
-            <tr><td>Tequila</td></tr>
-            <tr><td>Whisky</td></tr>
-            <tr><td>Whisky de malt</td></tr>
-            </tbody>
-        </table>
-        <p>
-            Ces produits ont été vendus avec des remises limitées, ce qui peut indiquer une opportunité pour Kdou d'ajuster sa stratégie de remise afin d'encourager les ventes de ces articles.
-        </p>
-        <!-- Proposition de requêtes -->
-        <details id="proposition-requetes">
-            <summary><strong>Proposition de requêtes</strong></summary>
-            <div class="details-content">
-                <h2>Requête pour Raphaël (Durée moyenne de livraison) :</h2>
-                <p>
-                    Cette requête permet de calculer la durée moyenne de livraison pour chaque fournisseur, en prenant en compte la différence entre la date de commande et la date d'envoi. Elle met en lumière les fournisseurs les plus rapides et les plus lents.
-                </p>
-                <pre>
-        <code>
-        SELECT Societe, AVG(DelaiMoyenL) AS DelaiMoyenL
-        FROM livraisons
-        GROUP BY Societe
-        ORDER BY DelaiMoyenL ASC;
-        </code>
-        </pre>
-                <p><strong>Explication de la requête :</strong></p>
-                <ul>
-                    <li><strong>SELECT Societe, AVG(DelaiMoyenL) AS DelaiMoyenL :</strong> Sélectionne la société et la moyenne de la durée de livraison (colonne DelaiMoyenL) pour chaque société.</li>
-                    <li><strong>FROM livraisons :</strong> Spécifie que la requête s'exécute sur la table livraisons, où les données des livraisons sont stockées.</li>
-                    <li><strong>GROUP BY Societe :</strong> Groupe les résultats par société, ce qui permet d'obtenir la durée moyenne par société.</li>
-                    <li><strong>ORDER BY DelaiMoyenL ASC :</strong> Trie les sociétés par la durée moyenne de livraison de manière croissante (du plus rapide au plus lent).</li>
-                </ul>
-                <p>
-                    Cela permettra de générer une liste des sociétés avec leur durée de livraison moyenne, afin de comparer leur rapidité et d'aider à identifier les meilleurs fournisseurs pour des livraisons rapides.
-                </p>
-                <p><strong>Résultat attendu basé sur les données :</strong></p>
-                <table border="1" cellpadding="10" cellspacing="0">
-                    <thead>
-                    <tr>
-                        <th>Societe</th>
-                        <th>DelaiMoyenL</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr><td>PB Knäckebröd AB</td><td>9.74</td></tr>
-                    <tr><td>Formaggi Fortini s.r.l.</td><td>11.22</td></tr>
-                    <tr><td>Norske Meierier</td><td>11.62</td></tr>
-                    <tr><td>Zaanse Snoepfabriek</td><td>11.89</td></tr>
-                    <tr><td>Lyngbysild</td><td>12.15</td></tr>
-                    <tr><td>Bigfoot Breweries</td><td>12.37</td></tr>
-                    <tr><td>Cooperativa de Quesos 'Las Cabras'</td><td>12.38</td></tr>
-                    <tr><td>Gai pâturage</td><td>12.38</td></tr>
-                    <tr><td>New England Seafood Cannery</td><td>12.44</td></tr>
-                    <tr><td>Nord-Ost-Fisch Handelsgesellschaft moH</td><td>12.58</td></tr>
-                    <tr><td>New Orleans Cajun Delights</td><td>12.59</td></tr>
-                    <tr><td>Refrescos Americanas LTDA</td><td>12.60</td></tr>
-                    <tr><td>Pavlova, Ltd.</td><td>12.68</td></tr>
-                    <tr><td>G'day, Mate</td><td>12.71</td></tr>
-                    <tr><td>Heli Süßwaren GmbH & Co. KG</td><td>12.80</td></tr>
-                    <tr><td>Ma Maison</td><td>12.82</td></tr>
-                    <tr><td>Exotic Liquids</td><td>12.85</td></tr>
-                    <tr><td>Grandma Kellys Homestead</td><td>13.37</td></tr>
-                    <tr><td>Karkki Oy</td><td>13.39</td></tr>
-                    <tr><td>Mayumi's</td><td>13.44</td></tr>
-                    <tr><td>Plusspar Lebensmittelgroßmärkte AG</td><td>13.51</td></tr>
-                    <tr><td>Svensk Sjöföda AB</td><td>13.70</td></tr>
-                    <tr><td>Forêts d'érables</td><td>13.72</td></tr>
-                    <tr><td>Tokyo Traders</td><td>13.72</td></tr>
-                    <tr><td>Leka Trading</td><td>13.89</td></tr>
-                    <tr><td>Escargots Nouveaux</td><td>14.24</td></tr>
-                    <tr><td>Specialty Biscuits, Ltd.</td><td>14.49</td></tr>
-                    <tr><td>Aux joyeux ecclésiastiques</td><td>15.30</td></tr>
-                    <tr><td>Pasta Buttini s.r.l.</td><td>15.81</td></tr>
-                    </tbody>
-                </table>
-                <p>
-                    Cette liste permet d'identifier rapidement les fournisseurs les plus rapides (comme PB Knäckebröd AB) et les plus lents (comme Pasta Buttini s.r.l.). Cette information est cruciale pour améliorer la gestion des livraisons et pour récompenser les meilleurs fournisseurs.
-                </p>
-
-                <h2>Requête pour Mahmud (Nombre total de commandes pour KDou) :</h2>
-                <p>
-                    Cette requête permet de compter le nombre total de commandes effectuées pour KDou, une information utile pour suivre les objectifs de vente.
-                </p>
-                <pre>
-        <code>
-        SELECT Count(*) AS NombreTotalesCommandes
-        FROM Commandes;
-        </code>
-        </pre>
-                <p><strong>Exemple de réponse :</strong></p>
-                <table border="1" cellpadding="10" cellspacing="0">
-                    <thead>
-                    <tr>
-                        <th>NombreTotalesCommandes</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr><td>48732</td></tr>
-                    </tbody>
-                </table>
-                <p>
-                    Cette requête donne un aperçu du volume total des commandes, essentiel pour évaluer les performances de vente et définir des objectifs de croissance.
-                </p>
-                <p><strong>Objectif :</strong> Permet de fêter des objectifs, où pour l’affichage sur un espace, comme un site web interne de l’entreprise.</p>
-
-                <h2>Requête pour Yassin (Affichage des produits par catégorie) :</h2>
-                <p>
-                    Cette requête permet à KDou de savoir quel produit appartient à quelle catégorie. Cela peut être très utile lorsqu'on souhaite trier les produits par catégorie, analyser les ventes par catégorie, ou afficher les produits d'une certaine catégorie.
-                </p>
-                <pre>
-        <code>
-        SELECT Categorie.NomCateg, Produit.NomProd
-        FROM Produit
-        INNER JOIN Categorie ON Produit.CodeCateg = Categorie.CodeCateg
-        ORDER BY Categorie.NomCateg;
-        </code>
-        </pre>
-                <p><strong>Explication de la requête :</strong></p>
-                <ul>
-                    <li><strong>SELECT Categorie.NomCateg, Produit.NomProd :</strong> Sélectionne le nom de la catégorie et le nom du produit.</li>
-                    <li><strong>FROM Produit INNER JOIN Categorie ON Produit.CodeCateg = Categorie.CodeCateg :</strong> Effectue une jointure entre les tables Produit et Categorie pour relier chaque produit à sa catégorie correspondante.</li>
-                    <li><strong>ORDER BY Categorie.NomCateg :</strong> Trie les résultats par nom de catégorie, ce qui facilite la lecture des produits par catégorie.</li>
-                </ul>
-                <p>
-                    Cette requête est particulièrement utile pour les équipes de vente et de marketing qui souhaitent analyser les produits disponibles dans chaque catégorie et adapter leur stratégie en conséquence.
-                </p>
-            </div>
-        </details>
-    </div>
-</details>
 <footer>
     <p>© Rapport SAE 1.04 Équipe 12D Yassin</p>
 </footer>
