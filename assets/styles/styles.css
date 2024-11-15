@@ -321,6 +321,11 @@ details.warning:target summary::after {
 }
 /* Fin de la partie inspiré par css-trick. */
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 .db-schema {
     overflow-x: auto;
     margin-bottom: 2rem;
@@ -555,7 +560,7 @@ footer p {
     }
 
     .team-member {
-        width: 100%;
+        width: 50%;
     }
 
     .team-members {
