@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+  <title>Kdou Business</title>
+</head>
+<body>
+
+<!-- Barre de navigation -->
+<nav class="navbar">
+  <div class="menu">
+    <a href="#">Accueil</a>
+    <a href="#">Mission 1</a>
+    <a href="#">Mission 2</a>
+    <a href="#">Mission 3</a>
+  </div>
+</nav>
+
+<section class="hero-section">
+  <h3>Mission 2 par MAHMUD HASSAN</h3>
+  <h2>Contexte</h2>
+  <p>Exploitation BDD KDou avec une interface low code</p>
+  <p>Les 4 indicateurs que j'ai choisi sont :</p>
+</section>
+<!-- Section Indicateur 1 -->
+<section class="hero-section">
+  <h2>Indicateur 1</h2>
+  <p><b>Énoncé</b> : Donner l’adresse complète du fournisseur Marie Delamare.</p>
+  <p>
+    <b>Interprétation </b> : Cette requête permet d’extraire l’adresse d’un fournisseur spécifique. On cherche à obtenir
+    les détails (adresse, ville, pays) pour le fournisseur ayant pour nom de société “Marie
+    Delamare”. Si le fournisseur n’existe pas, aucun résultat ne sera retourné. Cela peut
+    indiquer soit une erreur dans la base de données, soit l’absence du fournisseur dans la
+    liste.
+  </p>
+
+  <!-- Bouton pour afficher le Résultat -->
+  <input type="checkbox" id="result1-toggle">
+  <label for="result1-toggle">Voir le Résultat</label>
+  <div class="toggle-content">
+    <p>Résultat</p>
+    <table>
+      <thead>
+      <tr>
+        <th>Société</th>
+        <th>Adresse</th>
+        <th>Ville</th>
+        <th>Pays</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bouton pour afficher le Code SQL -->
+  <input type="checkbox" id="sql1-toggle">
+  <label for="sql1-toggle">Voir le Code SQL</label>
+  <div class="toggle-content">
+    <p>Code de SQL</p>
+    <table>
+      <thead>
+      <tr>
+        <th>Requête SQL</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="sql-code">
+          SELECT Fournisseur.Societe, Fournisseur.Adresse, Fournisseur.Ville, Fournisseur.Pays<br>
+          FROM Fournisseur<br>
+          WHERE (Fournisseur.Societe = "Marie Delamare");
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Section Indicateur 2 -->
+<section class="hero-section">
+  <h2>Indicateur 2</h2>
+  <p><b>Énoncé</b> : Donner la fonction du contact pour le fournisseur “Ma Maison”.</p>
+  <p>
+    <b>Interprétation</b> : Cette requête permet de connaître le poste occupé par le contact du fournisseur. On veut
+    récupérer la fonction exacte de la personne associée à la société “Ma Maison”. Cela est
+    souvent utile pour savoir à qui s’adresser dans un contexte commercial.
+  </p>
+
+  <!-- Bouton pour afficher le Résultat -->
+  <input type="checkbox" id="result2-toggle">
+  <label for="result2-toggle">Voir le Résultat</label>
+  <div class="toggle-content">
+    <p>Résultat</p>
+    <table>
+      <thead>
+      <tr>
+        <th>Société</th>
+        <th>Fonction</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Ma Maison</td>
+        <td>Directeur du marketing</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bouton pour afficher le Code SQL -->
+  <input type="checkbox" id="sql2-toggle">
+  <label for="sql2-toggle">Voir le Code SQL</label>
+  <div class="toggle-content">
+    <p>Code de SQL</p>
+    <table>
+      <thead>
+      <tr>
+        <th>Requête SQL</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="sql-code">
+          SELECT Fournisseur.Societe, Fournisseur.Fonction<br>
+          FROM Fournisseur<br>
+          WHERE (((Fournisseur.Societe) = "Ma Maison"));
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Section Indicateur 3 -->
+<section class="hero-section">
+  <h2>Indicateur 3</h2>
+  <p><b>Énoncé</b> : Lister les produits d’Italie ou d’Allemagne dont le prix unitaire est de 50€ ou moins.</p>
+  <p>
+    <b>Interprétation</b> : Cette requête permet d’extraire une liste de produits abordables provenant d’Allemagne ou
+    d’Italie. Les critères sont basés sur le pays d’origine du fournisseur et sur un prix unitaire
+    inférieur ou égal à 50€. Cela peut être utile pour une étude de marché ou pour identifier
+    des opportunités commerciales à moindre coût.
+  </p>
+
+  <!-- Bouton pour afficher le Résultat -->
+  <input type="checkbox" id="result3-toggle">
+  <label for="result3-toggle">Voir le Résultat</label>
+  <div class="toggle-content">
+    <p>Résultat</p>
+    <table>
+      <thead>
+      <tr>
+        <th>NomProd</th>
+        <th>PrixUnit</th>
+        <th>Pays</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Gustaf's Knäckebröd</td>
+        <td>17,50 €</td>
+        <td>Allemagne</td>
+      </tr>
+      <tr>
+        <td>NuNuCa Nuß-Nougat-Creme</td>
+        <td>11,67 €</td>
+        <td>Allemagne</td>
+      </tr>
+      <tr>
+        <td>Gumbär Gummibärchen</td>
+        <td>26,03 €</td>
+        <td>Allemagne</td>
+      </tr>
+      <tr>
+        <td>Schoggi Schokolade</td>
+        <td>36,58 €</td>
+        <td>Allemagne</td>
+      </tr>
+      <tr>
+        <td>Rössle Sauerkraut</td>
+        <td>38,00 €</td>
+        <td>Allemagne</td>
+      </tr>
+      <tr>
+        <td>Nord-Ost Matjeshering</td>
+        <td>21,58 €</td>
+        <td>Allemagne</td>
+      </tr>
+      <tr>
+        <td>Gorgonzola Telino</td>
+        <td>10,42 €</td>
+        <td>Italie</td>
+      </tr>
+      <tr>
+        <td>Mascapone Fabioli</td>
+        <td>26,67 €</td>
+        <td>Italie</td>
+      </tr>
+      <tr>
+        <td>Singaporean Hokkien Fried Mee</td>
+        <td>11,67 €</td>
+        <td>Allemagne</td>
+      </tr>
+      <tr>
+        <td>Gnocchi di nonna Alice</td>
+        <td>31,67 €</td>
+        <td>Italie</td>
+      </tr>
+      <tr>
+        <td>Ravioli Angelo</td>
+        <td>16,25 €</td>
+        <td>Italie</td>
+      </tr>
+      <tr>
+        <td>Wimmers gute Semmelknödel</td>
+        <td>27,71 €</td>
+        <td>Allemagne</td>
+      </tr>
+      <tr>
+        <td>Mozzarella di Giovanni</td>
+        <td>29,00 €</td>
+        <td>Italie</td>
+      </tr>
+      <tr>
+        <td>Original Frankfurter grüne Soße</td>
+        <td>10,83 €</td>
+        <td>Allemagne</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bouton pour afficher le Code SQL -->
+  <input type="checkbox" id="sql3-toggle">
+  <label for="sql3-toggle">Voir le Code SQL</label>
+  <div class="toggle-content">
+    <p>Code de SQL</p>
+    <table>
+      <thead>
+      <tr>
+        <th>Requête SQL</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="sql-code">
+          SELECT Produit.NomProd, Produit.PrixUnit, Fournisseur.Pays<br>
+          FROM Fournisseur INNER JOIN Produit ON Fournisseur.NoFour = Produit.NoFour<br>
+          WHERE (((Produit.PrixUnit &lt;= 50) AND (Fournisseur.Pays) = "Italie" OR (Fournisseur.Pays) = "Allemagne"));
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Section Indicateur 4 -->
+<section class="hero-section">
+  <h2>Indicateur 4</h2>
+  <p><b>Énoncé</b> : Lister les catégories de produits vendus par les fournisseurs basés à Singapour.</p>
+  <p>
+    <b>Interprétation</b> : Cette requête permet d’identifier les différentes catégories de produits proposés par des
+    fournisseurs situés à Singapour. Cela peut être utile pour analyser la diversité de l’offre ou
+    pour cibler des fournisseurs spécialisés dans certains types de produits.
+  </p>
+
+  <!-- Bouton pour afficher le Résultat -->
+  <input type="checkbox" id="result4-toggle">
+  <label for="result4-toggle">Voir le Résultat</label>
+  <div class="toggle-content">
+    <p>Résultat</p>
+    <table>
+      <thead>
+      <tr>
+        <th>NomProd</th>
+        <th>NomCateg</th>
+        <th>Pays</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Ipoh Coffee</td>
+        <td>Boissons</td>
+        <td>Singapour</td>
+      </tr>
+      <tr>
+        <td>Gula Malacca</td>
+        <td>Condiments</td>
+        <td>Singapour</td>
+      </tr>
+      <tr>
+        <td>Laksa Paste</td>
+        <td>Condiments</td>
+        <td>Singapour</td>
+      </tr>
+      <tr>
+        <td>Sambal Chilli Sauce</td>
+        <td>Condiments</td>
+        <td>Singapour</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bouton pour afficher le Code SQL -->
+  <input type="checkbox" id="sql4-toggle">
+  <label for="sql4-toggle">Voir le Code SQL</label>
+  <div class="toggle-content">
+    <p>Code de SQL</p>
+    <table>
+      <thead>
+      <tr>
+        <th>Requête SQL</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="sql-code">
+          SELECT Produit.NomProd, Categorie.NomCateg, Fournisseur.Pays<br>
+          FROM Fournisseur INNER JOIN (Categorie INNER JOIN Produit ON Categorie.CodeCateg = Produit.CodeCateg) ON Fournisseur.NoFour = Produit.NoFour<br>
+          WHERE (((Fournisseur.Pays) = "Singapour"));
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section class="hero-section">
+  <h2>Conclusion</h2>
+  <p>Ces requêtes SQL montrent comment utiliser les commandes SELECT, FROM, et WHERE, ainsi que les jointures (INNER JOIN), pour récupérer des données de plusieurs tables. Chaque requête permet d’extraire des informations spécifiques en filtrant selon des critères comme le nom de la société, le pays du fournisseur ou le prix des produits. Les jointures relient les données entre les tables, ce qui est essentiel pour faire des analyses détaillées dans une base de données.</p>
+
+</section>
+
+<!-- Pied de page -->
+<footer>
+  <p>&copy; 2024 Kdou Business</p>
+</footer>
+
+</body>
+</html>
