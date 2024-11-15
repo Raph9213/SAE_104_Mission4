@@ -1,54 +1,102 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'Accueil - SAE 1.04</title>
-    <link rel="stylesheet" href="assets/styles/styles.css">
-  </head>
-  <body id="home-page">
-    <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-    <header>
-      <nav class="navbar">
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
-        <a href="index.html" class="nav-logo">SAE 1.04</a>
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Introduction</a></li>
-          <li><a href="mission1.html" class="nav-link">Mission 1</a></li>
-          <li><a href="mission2.html" class="nav-link">Mission 2</a></li>
-          <li><a href="mission3.html" class="nav-link">Mission 3</a></li>
-        </ul>
-      </nav>
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Page d'Accueil - SAE 1.04</title>
+        <link rel="stylesheet" href="assets/styles/styles.css">
+    </head>
+    <body id="home-page">
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <header>
+            <nav class="navbar">
+                <label for="menu-toggle" class="menu-icon">&#9776;</label>
+                <a href="index.html" class="nav-logo">SAE 1.04</a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Introduction</a></li>
+                    <li><a href="mission1.html" class="nav-link">Mission 1</a></li>
+                    <li><a href="mission2.html" class="nav-link">Mission 2</a></li>
+                    <li><a href="mission3.html" class="nav-link">Mission 3</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <section class="hero-section">
-      <h1>Bienvenue sur le rapport SAE 1.04</h1>
-      <p>Analyse des missions pour l'entreprise KDou</p>
-    </section>
+        <section class="content-section">
+            <h1>Bienvenue sur le rapport de la SAE 1.04</h1>
+            <p>Analyse des missions pour l'entreprise KDou</p>
+            <h2>Introduction</h2>
+            <p>
+                Dans le cadre de notre formation en BUT en informatique, nous avons entrepris un projet en collaboration avec l'entreprise fictive KDou, spécialisée dans la gestion et l'analyse de données. Ce projet, divisé en trois missions principales, vise à améliorer les processus de gestion des données de l'entreprise et à fournir des insights précieux pour soutenir ses opérations stratégiques.
+            </p>
+            <p>
+                La première mission consiste en une exploration initiale des données fournies par KDou. Elle a pour objectif de comprendre la structure des données, d'identifier les tendances et de détecter les anomalies potentielles. La deuxième mission se concentre sur l'exploitation de la base de données de KDou en utilisant une interface low code, facilitant ainsi l'interaction avec les données sans nécessiter de compétences avancées en programmation. Enfin, la troisième mission implique une analyse approfondie des données à l'aide de requêtes SQL complexes pour extraire des informations détaillées et soutenir la prise de décision.
+            </p>
+            <p>
+                Ce rapport détaille nos démarches, les méthodologies employées, les défis rencontrés et les solutions apportées tout au long de ces missions. Nous mettons en lumière l'importance de l'analyse de données dans le contexte actuel des affaires et comment notre travail contribue aux objectifs de KDou.
+            </p>
+        </section>
 
-    <section class="mission-overview">
-      <article class="mission-btn">
-        <a href="mission1.html">
-          <h2>Mission 1</h2>
-          <p>Exploration des données et analyse initiale pour KDou</p>
-        </a>
-      </article>
-      <article class="mission-btn">
-        <a href="mission2.html">
-          <h2>Mission 2</h2>
-          <p>Exploitation de la BDD KDou avec une interface low code</p>
-        </a>
-      </article>
-      <article class="mission-btn">
-        <a href="mission3.html">
-          <h2>Mission 3</h2>
-          <p>Analyse approfondie des données via SQL</p>
-        </a>
-      </article>
-    </section>
+        <section class="team-section">
+            <h2>Équipe 12D, groupe 112.</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="assets/images/raphael.gif" alt="Photo de Raphaël">
+                    <h3>Raphaël</h3>
+                    <p>
+                        Responsable du design principal du site web et de la mise en place du CSS. Rédaction de la mission 1 lors du rapport, et créateur du CSS, maquette, et style du site du rapport. Créateur de la page mission1.
+                    </p>
+                </div>
+                <div class="team-member">
+                    <img src="assets/images/mahmud.png" alt="Photo de Mahmud">
+                    <h3>Mahmud</h3>
+                    <p>
+                        Rédacteur de la mission 3, créateur du CSS et de la page mission 2.
+                    </p>
+                </div>
+                <div class="team-member">
+                    <img src="assets/images/yassin.webp" alt="Photo de Yassin">
+                    <h3>Yassin</h3>
+                    <p>
+                        Rédacteur de la mission 2, créateur de la page mission 3.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-    <footer>
-      <p>&copy; Rapport SAE 1.04 Équipe 12D</p>
-    </footer>
-  </body>
+        <section class="mission-overview">
+            <article class="mission-btn">
+                <a href="mission1.html">
+                    <h2>Mission 1</h2>
+                    <p>Exploration des données et analyse initiale pour KDou</p>
+                </a>
+            </article>
+            <article class="mission-btn">
+                <a href="mission2.html">
+                    <h2>Mission 2</h2>
+                    <p>Exploitation de la BDD KDou avec une interface low code</p>
+                </a>
+            </article>
+            <article class="mission-btn">
+                <a href="mission3.html">
+                    <h2>Mission 3</h2>
+                    <p>Analyse approfondie des données via SQL</p>
+                </a>
+            </article>
+        </section>
+
+        <section class="conclusion-section">
+            <details>
+                <summary>Conclusion</summary>
+                <div class="conclusion-content">
+                    <p>
+                      Notre analyse des systèmes internes dans Kdou a révélé des problèmes significatifs dans la gestion des données de KDou. Nous recommandons fortement l'adoption d'un Système de Gestion de Base de Données (SGBD) tel que Microsoft Access, comme démontré dans les missions 2 et 3. Cette transition permettrait une meilleure organisation et une gestion plus efficace des données. De plus, pour atteindre ses objectifs d'écoresponsabilité, KDou devrait continuer à moderniser ses systèmes informatiques. Ces améliorations technologiques contribueront non seulement à l'efficacité opérationnelle mais aussi à réduire l'empreinte environnementale de l'entreprise par une meilleure gestion des ressources numériques.
+                    </p>
+                </div>
+            </details>
+        </section>
+
+        <footer>
+            <p>&copy; Rapport SAE 1.04 Équipe 12D</p>
+        </footer>
+    </body>
 </html>

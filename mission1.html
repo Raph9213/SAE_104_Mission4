@@ -1,289 +1,916 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mission 1 - SAE 1.04</title>
-        <link rel="stylesheet" href="assets/styles/styles.css">
-    </head>
-    <body id="mission-page">
-        <header>
-            <nav class="navbar">
-                <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-                <label for="menu-toggle" class="menu-icon">&#9776;</label>
-                <a href="index.html" class="nav-logo">SAE 1.04</a>
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Introduction</a></li>
-                    <li><a href="mission1.html" class="nav-link">Mission 1</a></li>
-                    <li><a href="mission2.html" class="nav-link">Mission 2</a></li>
-                    <li><a href="mission3.html" class="nav-link">Mission 3</a></li>
-                </ul>
-            </nav>
-            <h1>Mission 1 : Contexte et Bilan</h1>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission 1 - SAE 1.04</title>
+    <link rel="stylesheet" href="assets/styles/styles.css">
+</head>
+<body id="mission-page">
+    <header>
+        <nav class="navbar">
+            <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+            <label for="menu-toggle" class="menu-icon">𝄘</label>
+            <a href="index.html" class="nav-logo">SAE 1.04</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Introduction</a></li>
+                <li><a href="mission1.html" class="nav-link">Mission 1</a></li>
+                <li><a href="mission2.html" class="nav-link">Mission 2</a></li>
+                <li><a href="mission3.html" class="nav-link">Mission 3</a></li>
+            </ul>
+        </nav>
+        <h1>Mission 1 : Contexte et Bilan</h1>
+    </header>
 
-        <section class="content-section">
-            <h2>Contexte</h2>
-            <p>
-                <strong>KDou</strong> est une entreprise spécialisée dans la vente de produits alimentaires d’épicerie fine.
-                Actuellement, elle cherche à renforcer son positionnement <strong>éco-responsable</strong> tout en améliorant sa rentabilité.
-                Notre équipe est chargée de l'analyse des données pour aider KDou à améliorer son image et à optimiser ses opérations.
-            </p>
+    <section class="content-section">
+        <h2>Contexte</h2>
+        <p>
+            <strong>KDou</strong> est une entreprise spécialisée dans la vente de produits alimentaires d'épicerie fine.
+            Face à une concurrence accrue et une demande croissante pour des produits respectueux de l'environnement,
+            KDou souhaite renforcer son positionnement <strong>éco-responsable</strong> tout en améliorant sa rentabilité.
+            Pour cela, une analyse approfondie des données internes est essentielle afin d'identifier les axes d'amélioration.
+        </p>
+        <p>
+            Notre équipe lors de cet rapport a été chargée d'examiner les données actuelles de l'entreprise, d'identifier les problèmes existants
+            et de proposer des solutions pour optimiser les processus opérationnels et la gestion des informations. 
+            Nous avons pu avoir accès a une partie des données de l'entreprise via des fichiers Excel de l'entreprise, qui nous on permis de faire ce rapport.
+            Pour chaque table Excel, nous avons défini plusieurs clés primaires et des relations entre les tables, elle nous permetterera d'examiner plus en profondeur les données.
+            Elle permet égalament pour Kdou de mieux comprendre les données et de mieux comprendre les besoins des clients.
+            Pour chaque clés, nous avons identifié des types qui pourrait correspondre a une migration vers un système de base de données, expliqué plus en détail dans la conclusion.
+        </p>
+    </section>
+
+    <section class="content-section">
+        <h2>Bilan de l'étude des Données</h2>
+
+        <h3>Schéma de la Base de Données</h3>
+
+        <p>Nous avons extrait ces données en exploitant le fichier Excel des données de l'entreprise.</p>
+        <div class="db-schema">
+
+            <div class="schema-table">
+                
+                <div class="schema-table-row">
+                    
+                    <div class="schema-table-cell">
+                        <a href="#table-fournisseur" class="schema-table-box">
+                            <div class="schema-table-title">Fournisseur</div>
+                            <div class="schema-table-keys">
+                                <p><span class="pk" title="Identifie de manière unique chaque fournisseur.">[PK]</span> N° Fournisseur<br><span class="datatype">INTEGER</span></p>
+                                <p>Société<br><span class="datatype">VARCHAR(100)</span></p>
+                                <p>Contact<br><span class="datatype">VARCHAR(100)</span></p>
+                                <p>Fonction<br><span class="datatype">VARCHAR(50)</span></p>
+                                <p>Adresse<br><span class="datatype">VARCHAR(150)</span></p>
+                                <p>Ville<br><span class="datatype">VARCHAR(50)</span></p>
+                                <p>Région<br><span class="datatype">VARCHAR(50)</span></p>
+                                <p>Code Postal<br><span class="datatype">VARCHAR(10)</span></p>
+                                <p>Pays<br><span class="datatype">VARCHAR(50)</span></p>
+                                <p>Téléphone<br><span class="datatype">VARCHAR(20)</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="schema-relation-cell"></div>
+                    
+                    <div class="schema-table-cell">
+                        <a href="#table-produit" class="schema-table-box">
+                            <div class="schema-table-title">Produit</div>
+                            <div class="schema-table-keys">
+                                <p><span class="pk" title="Identifie de manière unique chaque produit.">[PK]</span> Réf Produit<br><span class="datatype">INTEGER</span></p>
+                                <p>Nom du Produit<br><span class="datatype">VARCHAR(100)</span></p>
+                                <p><span class="fk" title="Référence au N° Fournisseur dans la table Fournisseur.">[FK]</span> N° Fournisseur<br><span class="datatype">INTEGER</span></p>
+                                <p><span class="fk" title="Référence au Code Catégorie dans la table Catégorie.">[FK]</span> Code Catégorie<br><span class="datatype">INTEGER</span></p>
+                                <p>Quantité par Unité<br><span class="datatype">VARCHAR(50)</span></p>
+                                <p>Prix Unitaire<br><span class="datatype">DECIMAL</span></p>
+                                <p>Unités en Stock<br><span class="datatype">INTEGER</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="schema-relation-cell"></div>
+                    
+                    <div class="schema-table-cell">
+                        <a href="#table-detailcommande" class="schema-table-box">
+                            <div class="schema-table-title">DétailCommande</div>
+                            <div class="schema-table-keys">
+                                <p><span class="pk" title="Clé primaire composite avec Réf Produit.">[PK]</span> N° Commande<br><span class="datatype">INTEGER</span></p>
+                                <p><span class="pk" title="Clé primaire composite avec N° Commande.">[PK]</span> Réf Produit<br><span class="datatype">INTEGER</span></p>
+                                <p>Prix Unitaire<br><span class="datatype">DECIMAL</span></p>
+                                <p>Quantité<br><span class="datatype">INTEGER</span></p>
+                                <p>Remise (%)<br><span class="datatype">DECIMAL</span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="schema-table-row">
+                    
+                    <div class="schema-table-cell">
+                        <a href="#table-clientele" class="schema-table-box">
+                            <div class="schema-table-title">Clientèle</div>
+                            <div class="schema-table-keys">
+                                <p><span class="pk" title="Identifie de manière unique chaque client.">[PK]</span> Code Client<br><span class="datatype">VARCHAR(5)</span></p>
+                                <p>Société<br><span class="datatype">VARCHAR(100)</span></p>
+                                <p>Contact<br><span class="datatype">VARCHAR(100)</span></p>
+                                <p>Adresse<br><span class="datatype">VARCHAR(150)</span></p>
+                                <p>Ville<br><span class="datatype">VARCHAR(50)</span></p>
+                                <p>Code Postal<br><span class="datatype">VARCHAR(10)</span></p>
+                                <p>Pays<br><span class="datatype">VARCHAR(50)</span></p>
+                                <p>Téléphone<br><span class="datatype">VARCHAR(20)</span></p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="schema-relation-cell"></div>
+                    
+                    <div class="schema-table-cell">
+                        <a href="#table-commande" class="schema-table-box">
+                            <div class="schema-table-title">Commande</div>
+                            <div class="schema-table-keys">
+                                <p><span class="pk" title="Identifie de manière unique chaque commande.">[PK]</span> N° Commande<br><span class="datatype">INTEGER</span></p>
+                                <p><span class="fk" title="Référence au Code Client dans la table Clientèle.">[FK]</span> Code Client<br><span class="datatype">VARCHAR(5)</span></p>
+                                <p>Date Commande<br><span class="datatype">DATE</span></p>
+                                <p>A livrer avant<br><span class="datatype">DATE</span></p>
+                                <p>Date Envoi<br><span class="datatype">DATE</span></p>
+                                <p>Port<br><span class="datatype">DECIMAL</span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="schema-table-row">
+                    
+                    <div class="schema-table-cell">
+                        <a href="#table-categorie" class="schema-table-box">
+                            <div class="schema-table-title">Catégorie</div>
+                            <div class="schema-table-keys">
+                                <p><span class="pk" title="Identifie de manière unique chaque catégorie.">[PK]</span> Code Catégorie<br><span class="datatype">INTEGER</span></p>
+                                <p>Nom de Catégorie<br><span class="datatype">VARCHAR(50)</span></p>
+                                <p>Description<br><span class="datatype">TEXT</span></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <p>
+            Le schéma ci-dessus représente les relations entre les différentes tables de la base de données.
+            Cliquez sur une table pour accéder à sa description détaillée.
+        </p>
+
+        
+        <details id="table-fournisseur">
+            <summary><strong>Table : <span class="terminal-font">Fournisseur</span></strong></summary>
+            <table class="db-table">
+                <thead>
+                    <tr>
+                        <th>Nom de Colonne</th>
+                        <th>Type de Donnée</th>
+                        <th>Clé Primaire</th>
+                        <th>Clé Étrangère</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>N° Fournisseur</td>
+                        <td>INTEGER</td>
+                        <td class="yes-cell" title="Identifie de manière unique chaque fournisseur.">Oui</td>
+                        <td>Non</td>
+                        <td>Identifiant unique du fournisseur</td>
+                    </tr>
+                    <tr>
+                        <td>Société</td>
+                        <td>VARCHAR(100)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Nom de l'entreprise fournisseur</td>
+                    </tr>
+                    <tr>
+                        <td>Contact</td>
+                        <td>VARCHAR(100)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Nom du contact principal</td>
+                    </tr>
+                    <tr>
+                        <td>Fonction</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Fonction du contact</td>
+                    </tr>
+                    <tr>
+                        <td>Adresse</td>
+                        <td>VARCHAR(150)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Adresse du fournisseur</td>
+                    </tr>
+                    <tr>
+                        <td>Ville</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Ville du fournisseur</td>
+                    </tr>
+                    <tr>
+                        <td>Région</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Région du fournisseur</td>
+                    </tr>
+                    <tr>
+                        <td>Code Postal</td>
+                        <td>VARCHAR(10)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Code postal du fournisseur</td>
+                    </tr>
+                    <tr>
+                        <td>Pays</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Pays d'origine du fournisseur</td>
+                    </tr>
+                    <tr>
+                        <td>Téléphone</td>
+                        <td>VARCHAR(20)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Numéro de téléphone du fournisseur</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5>Exemples d'Enregistrements</h5>
+            <table class="db-table example-table">
+                <thead>
+                    <tr>
+                        <th>N° Fournisseur</th>
+                        <th>Société</th>
+                        <th>Contact</th>
+                        <th>Fonction</th>
+                        <th>Adresse</th>
+                        <th>Ville</th>
+                        <th>Région</th>
+                        <th>Code Postal</th>
+                        <th>Pays</th>
+                        <th>Téléphone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Exotic Liquids</td>
+                        <td>Charlotte Cooper</td>
+                        <td>Assistant export</td>
+                        <td>49 Gilbert St.</td>
+                        <td>London</td>
+                        <td></td>
+                        <td>EC1 4SD</td>
+                        <td>Royaume-Uni</td>
+                        <td>(71) 555-2222</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>New Orleans Cajun Delights</td>
+                        <td>Shelley Burke</td>
+                        <td>Acheteur</td>
+                        <td>P.O. Box 78934</td>
+                        <td>New Orleans</td>
+                        <td>LA</td>
+                        <td>70117</td>
+                        <td><a href="#warning1" class="problem-link">Etats Unis</a></td>
+                        <td>(100) 555-4822</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Grandma Kelly's Homestead</td>
+                        <td>Regina Murphy</td>
+                        <td>Représentant(e)</td>
+                        <td>707 Oxford Rd.</td>
+                        <td>Ann Arbor</td>
+                        <td>MI</td>
+                        <td>48104</td>
+                        <td><a href="#warning1" class="problem-link">Etats-Unis</a></td>
+                        <td>(313) 555-5735</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            
+            <details class="warning" id="warning1">
+                <summary>Avertissement : Incohérence dans les noms de pays</summary>
+                <div class="warning-content">
+                    <p><strong>Problème :</strong> Utilisation de "Etats Unis" et "Etats-Unis" pour le même pays.</p>
+                    <p><strong>Solution :</strong> Standardiser les noms de pays en utilisant une nomenclature unique, par exemple "États-Unis".</p>
+                </div>
+            </details>
+        </details>
+
+        
+        <details id="table-produit">
+            <summary><strong>Table : <span class="terminal-font">Produit</span></strong></summary>
+            <table class="db-table">
+                <thead>
+                    <tr>
+                        <th>Nom de Colonne</th>
+                        <th>Type de Donnée</th>
+                        <th>Clé Primaire</th>
+                        <th>Clé Étrangère</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Réf Produit</td>
+                        <td>INTEGER</td>
+                        <td class="yes-cell" title="Identifie de manière unique chaque produit.">Oui</td>
+                        <td>Non</td>
+                        <td>Identifiant unique du produit</td>
+                    </tr>
+                    <tr>
+                        <td>N° Fournisseur</td>
+                        <td>INTEGER</td>
+                        <td>Non</td>
+                        <td class="yes-cell" title="Référence au N° Fournisseur dans la table Fournisseur.">Oui</td>
+                        <td>Référence au fournisseur</td>
+                    </tr>
+                    <tr>
+                        <td>Code Catégorie</td>
+                        <td>INTEGER</td>
+                        <td>Non</td>
+                        <td class="yes-cell" title="Référence au Code Catégorie dans la table Catégorie.">Oui</td>
+                        <td>Référence à la catégorie du produit</td>
+                    </tr>
+                    <tr>
+                        <td>Nom du Produit</td>
+                        <td>VARCHAR(100)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Nom du produit</td>
+                    </tr>
+                    <tr>
+                        <td>Quantité par Unité</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Quantité par unité</td>
+                    </tr>
+                    <tr>
+                        <td>Prix Unitaire</td>
+                        <td>DECIMAL</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Prix unitaire du produit</td>
+                    </tr>
+                    <tr>
+                        <td>Unités en Stock</td>
+                        <td>INTEGER</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Nombre d'unités en stock</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5>Exemples d'Enregistrements</h5>
+            <table class="db-table example-table">
+                <thead>
+                    <tr>
+                        <th>Réf Produit</th>
+                        <th>N° Fournisseur</th>
+                        <th>Code Catégorie</th>
+                        <th>Nom du Produit</th>
+                        <th>Quantité par Unité</th>
+                        <th>Prix Unitaire</th>
+                        <th>Unités en Stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Chai</td>
+                        <td>10 boîtes x 20 sacs</td>
+                        <td>27,50</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Chang</td>
+                        <td>24  bouteilles (12 onces)</td>
+                        <td><a href="#warning2" class="problem-link">17,42 €</a></td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>Aniseed Syrup</td>
+                        <td>12 bouteilles (550 ml)</td>
+                        <td>9,17</td>
+                        <td>13</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>Chef Anton's Cajun Seasoning</td>
+                        <td>48 pots (6 onces)</td>
+                        <td>18,33</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            
+            <details class="warning" id="warning2">
+                <summary>Avertissement : Prix incohérent</summary>
+                <div class="warning-content">
+                    <p><strong>Problème :</strong> Le prix unitaire est incohérent avec le marché actuel.</p>
+                    <p><strong>Solution :</strong> Vérifier le prix auprès du fournisseur et mettre à jour la base de données.</p>
+                </div>
+            </details>
+        </details>
+
+        
+        <details id="table-categorie">
+            <summary><strong>Table : <span class="terminal-font">Catégorie</span></strong></summary>
+            <table class="db-table">
+                <thead>
+                    <tr>
+                        <th>Nom de Colonne</th>
+                        <th>Type de Donnée</th>
+                        <th>Clé Primaire</th>
+                        <th>Clé Étrangère</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Code Catégorie</td>
+                        <td>INTEGER</td>
+                        <td class="yes-cell" title="Identifie de manière unique chaque catégorie.">Oui</td>
+                        <td>Non</td>
+                        <td>Identifiant unique de la catégorie</td>
+                    </tr>
+                    <tr>
+                        <td>Nom de Catégorie</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Nom de la catégorie</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>TEXT</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Description de la catégorie</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5>Exemples d'Enregistrements</h5>
+            <table class="db-table example-table">
+                <thead>
+                    <tr>
+                        <th>Code Catégorie</th>
+                        <th>Nom de Catégorie</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Boissons</td>
+                        <td>Boissons, cafés, thés, alcools</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><a href="#warning5" class="problem-link">Condiments</a></td>
+                        <td>Sauces, assaisonnements et épices</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Desserts</td>
+                        <td>Desserts et friandises</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Produits laitiers</td>
+                        <td>Fromages</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Pâtes et céréales</td>
+                        <td>Pains, biscuits, pâtes et céréales</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            
+            <details class="warning" id="warning5">
+                <summary>Avertissement : Faute d'orthographe dans le nom de catégorie</summary>
+                <div class="warning-content">
+                    <p><strong>Problème :</strong> Nom de catégorie mal orthographié.</p>
+                    <p><strong>Solution :</strong> Corriger l'orthographe du nom de la catégorie.</p>
+                </div>
+            </details>
+        </details>
+
+        
+        <details id="table-clientele">
+            <summary><strong>Table : <span class="terminal-font">Clientèle</span></strong></summary>
+            <table class="db-table">
+                <thead>
+                    <tr>
+                        <th>Nom de Colonne</th>
+                        <th>Type de Donnée</th>
+                        <th>Clé Primaire</th>
+                        <th>Clé Étrangère</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Code Client</td>
+                        <td>VARCHAR(5)</td>
+                        <td class="yes-cell" title="Identifie de manière unique chaque client.">Oui</td>
+                        <td>Non</td>
+                        <td>Identifiant unique du client</td>
+                    </tr>
+                    <tr>
+                        <td>Société</td>
+                        <td>VARCHAR(100)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Nom de l'entreprise cliente</td>
+                    </tr>
+                    <tr>
+                        <td>Contact</td>
+                        <td>VARCHAR(100)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Nom du contact principal</td>
+                    </tr>
+                    <tr>
+                        <td>Adresse</td>
+                        <td>VARCHAR(150)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Adresse du client</td>
+                    </tr>
+                    <tr>
+                        <td>Ville</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Ville du client</td>
+                    </tr>
+                    <tr>
+                        <td>Code Postal</td>
+                        <td>VARCHAR(10)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Code postal du client</td>
+                    </tr>
+                    <tr>
+                        <td>Pays</td>
+                        <td>VARCHAR(50)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Pays du client</td>
+                    </tr>
+                    <tr>
+                        <td>Téléphone</td>
+                        <td>VARCHAR(20)</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Numéro de téléphone du client</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5>Exemples d'Enregistrements</h5>
+            <table class="db-table example-table">
+                <thead>
+                    <tr>
+                        <th>Code Client</th>
+                        <th>Société</th>
+                        <th>Contact</th>
+                        <th>Adresse</th>
+                        <th>Ville</th>
+                        <th>Code Postal</th>
+                        <th>Pays</th>
+                        <th>Téléphone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ALYAD</td>
+                        <td>Chez Bouxou</td>
+                        <td>Alyssa Duranta</td>
+                        <td>25, rue Mongolfier</td>
+                        <td>Paris</td>
+                        <td>75013</td>
+                        <td>France</td>
+                        <td>06. 78.34.11.65</td>
+                    </tr>
+                    <tr>
+                        <td>ANCBE</td>
+                        <td>L'Ancienne Auberge</td>
+                        <td>Max Deschamps</td>
+                        <td>Le Bourg</td>
+                        <td>Puy-l'Évêque</td>
+                        <td>46250</td>
+                        <td>France</td>
+                        <td><a href="#warning6" class="problem-link">07.92.24.45.40</a></td>
+                    </tr>
+                    <tr>
+                        <td>ATAUG</td>
+                        <td>L'Atelier des Augustins</td>
+                        <td>Isra Dubois</td>
+                        <td>11 Rue des Augustins</td>
+                        <td>Lyon</td>
+                        <td>69001</td>
+                        <td>France</td>
+                        <td>06.42.54.22.66</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            
+            <details class="warning" id="warning6">
+                <summary>Avertissement : Format de numéro de téléphone incohérent</summary>
+                <div class="warning-content">
+                    <p><strong>Problème :</strong> Le numéro de téléphone ne suit pas le format standard.</p>
+                    <p><strong>Solution :</strong> Uniformiser le format des numéros de téléphone dans la base de données.</p>
+                </div>
+            </details>
+        </details>
+
+        
+        <details id="table-commande">
+            <summary><strong>Table : <span class="terminal-font">Commande</span></strong></summary>
+            <table class="db-table">
+                <thead>
+                    <tr>
+                        <th>Nom de Colonne</th>
+                        <th>Type de Donnée</th>
+                        <th>Clé Primaire</th>
+                        <th>Clé Étrangère</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>N° Commande</td>
+                        <td>INTEGER</td>
+                        <td class="yes-cell" title="Identifie de manière unique chaque commande.">Oui</td>
+                        <td>Non</td>
+                        <td>Identifiant unique de la commande</td>
+                    </tr>
+                    <tr>
+                        <td>Code Client</td>
+                        <td>VARCHAR(5)</td>
+                        <td>Non</td>
+                        <td class="yes-cell" title="Référence au Code Client dans la table Clientèle.">Oui</td>
+                        <td>Référence au client</td>
+                    </tr>
+                    <tr>
+                        <td>Date Commande</td>
+                        <td>DATE</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Date de la commande</td>
+                    </tr>
+                    <tr>
+                        <td>A livrer avant</td>
+                        <td>DATE</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Date limite de livraison</td>
+                    </tr>
+                    <tr>
+                        <td>Date Envoi</td>
+                        <td>DATE</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Date d'envoi de la commande</td>
+                    </tr>
+                    <tr>
+                        <td>Port</td>
+                        <td>DECIMAL</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Frais de port</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5>Exemples d'Enregistrements</h5>
+            <table class="db-table example-table">
+                <thead>
+                    <tr>
+                        <th>N° Commande</th>
+                        <th>Code Client</th>
+                        <th>Date Commande</th>
+                        <th>A livrer avant</th>
+                        <th>Date Envoi</th>
+                        <th>Port</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10000</td>
+                        <td>FRANK</td>
+                        <td>27/07/2020</td>
+                        <td>24/08/2020</td>
+                        <td>01/08/2020</td>
+                        <td>26,7</td>
+                    </tr>
+                    <tr>
+                        <td>10001</td>
+                        <td>COMMI</td>
+                        <td>30/07/2020</td>
+                        <td>27/08/2020</td>
+                        <td>09/08/2020</td>
+                        <td>43</td>
+                    </tr>
+                    <tr>
+                        <td>10002</td>
+                        <td>FRANS</td>
+                        <td><a href="#warning7" class="problem-link">31-07-2020</a></td>
+                        <td>28/08/2020</td>
+                        <td>03/08/2020</td>
+                        <td>93,2</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            
+            <details class="warning" id="warning7">
+                <summary>Avertissement : Format de date incohérent</summary>
+                <div class="warning-content">
+                    <p><strong>Problème :</strong> Utilisation du format "JJ-MM-AAAA" au lieu de "JJ/MM/AAAA".</p>
+                    <p><strong>Solution :</strong> Uniformiser le format des dates dans la base de données.</p>
+                </div>
+            </details>
+        </details>
+
+        
+        <details id="table-detailcommande">
+            <summary><strong>Table : <span class="terminal-font">DétailCommande</span></strong></summary>
+            <table class="db-table">
+                <thead>
+                    <tr>
+                        <th>Nom de Colonne</th>
+                        <th>Type de Donnée</th>
+                        <th>Clé Primaire</th>
+                        <th>Clé Étrangère</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>N° Commande</td>
+                        <td>INTEGER</td>
+                        <td class="yes-cell" title="Clé primaire composite avec Réf Produit.">Oui*</td>
+                        <td class="yes-cell" title="Référence au N° Commande dans la table Commande.">Oui</td>
+                        <td>Référence à la commande</td>
+                    </tr>
+                    <tr>
+                        <td>Réf Produit</td>
+                        <td>INTEGER</td>
+                        <td class="yes-cell" title="Clé primaire composite avec N° Commande.">Oui*</td>
+                        <td class="yes-cell" title="Référence à la Réf Produit dans la table Produit.">Oui</td>
+                        <td>Référence au produit</td>
+                    </tr>
+                    <tr>
+                        <td>Prix Unitaire</td>
+                        <td>DECIMAL</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Prix unitaire du produit</td>
+                    </tr>
+                    <tr>
+                        <td>Quantité</td>
+                        <td>INTEGER</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Quantité commandée</td>
+                    </tr>
+                    <tr>
+                        <td>Remise (%)</td>
+                        <td>DECIMAL</td>
+                        <td>Non</td>
+                        <td>Non</td>
+                        <td>Pourcentage de remise</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>* Clé primaire composite</p>
+
+            <h5>Exemples d'Enregistrements</h5>
+            <table class="db-table example-table">
+                <thead>
+                    <tr>
+                        <th>Réf Produit</th>
+                        <th>N° Commande</th>
+                        <th>Prix Unitaire</th>
+                        <th>Quantité</th>
+                        <th>Remise (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>10021</td>
+                        <td>12</td>
+                        <td>60</td>
+                        <td>0,200000003</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>10043</td>
+                        <td>12,6</td>
+                        <td>40</td>
+                        <td><a href="#warning9" class="problem-link">0,050000001</a></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>10065</td>
+                        <td>12,6</td>
+                        <td>55</td>
+                        <td>0,25</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            
+            <details class="warning" id="warning9">
+                <summary>Avertissement : Remise exprimée avec trop de décimales</summary>
+                <div class="warning-content">
+                    <p><strong>Problème :</strong> La remise est exprimée avec une précision inutile.</p>
+                    <p><strong>Solution :</strong> Arrondir la remise à deux décimales pour plus de clarté.</p>
+                </div>
+            </details>
+        </details>
+
+        
+        <section class="general-warnings">
+            <h3>Avertissements Généraux</h3>
+            <details class="warning" id="warning-general1">
+                <summary>Avertissement : Violations des contraintes d'intégrité</summary>
+                <div class="warning-content">
+                    <p><strong>Problème :</strong> Certaines données ne respectent pas les contraintes d'intégrité référentielle, par exemple des commandes associées à des clients inexistants.</p>
+                    <p><strong>Solution :</strong> Vérifier l'intégrité des données et corriger les entrées problématiques en assurant que toutes les clés étrangères correspondent à des enregistrements existants.</p>
+                </div>
+            </details>
+
+            <details class="warning" id="warning-general2">
+                <summary>Avertissement : Données dupliquées</summary>
+                <div class="warning-content">
+                    <p><strong>Problème :</strong> Présence de doublons dans les tables, ce qui peut fausser les analyses.</p>
+                    <p><strong>Solution :</strong> Mettre en place des contraintes d'unicité et nettoyer les données en supprimant les doublons.</p>
+                </div>
+            </details>
         </section>
 
-        <section class="content-section">
-            <h2>Questions et réponses</h2>
+    </section>
 
-            <details id="question1">
-                <summary><strong>1) Dans chaque onglet, identifiez quelles sont les colonnes correspondant ou pouvant correspondre à des clés primaires.</strong></summary>
-                <div class="details-content">
-                    <p><strong>Fournisseur :</strong> N° Fournisseur</p>
-                    <p><strong>Produit :</strong> Réf produit</p>
-                    <p><strong>Catégorie :</strong> Code catégorie</p>
-                    <p><strong>Clientèle :</strong> Code client</p>
-                    <p><strong>Commande :</strong> N° Commande</p>
-                    <p><strong>DétailCommande :</strong> Réf produit et N° commande</p>
-                </div>
-            </details>
+    <section class="content-section">
+        <h2>Perspectives d'Amélioration et Conclusion</h2>
+        <p>
+            Pour résoudre les problèmes identifiés et améliorer la gestion des données, nous recommandons les actions suivantes :
+        </p>
+        <ul class="suggestion-list">
+            <li><strong>Standardisation des données :</strong> Mettre en place des normes pour les entrées (noms de pays, formats de date, etc.) afin de garantir la cohérence. A plusieurs reprises, la base de données a contenue des erreurs et des incohérences, ces données doivent être validé et standardisées avant l'ajout dans le fichier.</li>
+            <li><strong>Mise en place d'un SGBD :</strong> Utiliser un Système de Gestion de Base de Données relationnel pour assurer l'intégrité des données et faciliter les requêtes complexes. Actuellement, Kdou utilise des fichiers Excel pour stocker les données. Ce n'est pas optimal pour une gestion efficace des données.</li>
+            <li><strong>Optimisation des performances :</strong> Optimiser la performance du SGBD en utilisant des indexes pour accès rapide aux données.</li>
+            <li><strong>Validation des entrées :</strong> Implémenter des contrôles lors de la saisie pour éviter les erreurs et les valeurs manquantes.</li>
+            <li><strong>Formation du personnel :</strong> Former les employés aux bonnes pratiques de gestion des données et à l'utilisation du nouveau système.</li>
+            <li><strong>Audit régulier des données :</strong> Mettre en place des processus d'audit pour détecter et corriger rapidement les anomalies.</li>
+        </ul>
+        <p>
+            En adoptant ces mesures, KDou pourra améliorer significativement la qualité de ses données, ce qui contribuera à une meilleure prise de décision,
+            une satisfaction client accrue et un avantage concurrentiel sur le marché de l'épicerie fine éco-responsable.
+        </p>
+    </section>
 
-            <details id="question2">
-                <summary><strong>2) Dans chaque onglet, identifiez quelles sont les colonnes correspondant à des clés étrangères.</strong></summary>
-                <div class="details-content">
-                    <p><strong>Produit :</strong> N° fournisseur &amp; Code catégorie</p>
-                    <p><strong>Commande :</strong> Code client</p>
-                    <p><strong>DétailCommande :</strong> Réf produit &amp; N° commande</p>
-                </div>
-            </details>
-
-            <details id="question3">
-                <summary><strong>3) Réponses aux questions d'analyse des données :</strong></summary>
-                <div class="details-content">
-                    <details id="question3a">
-                        <summary><strong>a) Combien y a-t-il de clients nantais ?</strong></summary>
-                        <div class="details-content">
-                            <p>Il y a <strong>3 clients</strong> situés à <strong>Nantes</strong>.</p>
-                        </div>
-                    </details>
-
-                    <details id="question3b">
-                        <summary><strong>b) Combien y a-t-il de clients de région parisienne ?</strong></summary>
-                        <div class="details-content">
-                            <p>Il y a <strong>5 clients</strong> en <strong>région parisienne</strong>.</p>
-                        </div>
-                    </details>
-
-                    <details id="question3c">
-                        <summary><strong>c) Donnez l’adresse du fournisseur Marie Delamare?</strong></summary>
-                        <div class="details-content">
-                            <p>L’adresse est : <strong>22 rue H. Voiron, Montceau, 71300, France</strong>.</p>
-                        </div>
-                    </details>
-
-                    <details id="question3d">
-                        <summary><strong>d) Combien y a-t-il de fournisseurs en Amérique du Nord ?</strong></summary>
-                        <div class="details-content">
-                            <p>Il y a <strong>7 fournisseurs</strong> en <strong>Amérique du Nord</strong>, situés aux <strong>États-Unis</strong> et au <strong>Canada</strong>.</p>
-                            <div class="warning">
-                                <input type="checkbox" id="warning1">
-                                <label for="warning1">Avertissement</label>
-                                <div class="warning-content">
-                                    <p><strong>Note :</strong> Les données utilisent à la fois "USA" et "États-Unis", ce qui crée des incohérences. Il faudrait standardiser les noms des pays.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details id="question3e">
-                        <summary><strong>e) Combien y a-t-il de pays dans l’UE autre que la France ?</strong></summary>
-                        <div class="details-content">
-                            <p>Il y a <strong>11 pays</strong> de l'<strong>UE</strong> en dehors de la <strong>France</strong>.</p>
-                        </div>
-                    </details>
-
-                    <details id="question3f">
-                        <summary><strong>f) Quelle est la fonction du contact fournisseur Ma maison ?</strong></summary>
-                        <div class="details-content">
-                            <p>Le contact pour le fournisseur Ma Maison est un <strong>Directeur du marketing</strong>.</p>
-                        </div>
-                    </details>
-
-                    <details id="question3g">
-                        <summary><strong>g) Quelle est la fonction de contact fournisseur la plus représentée ?</strong></summary>
-                        <div class="details-content">
-                            <p>La fonction de contact la plus représentée est <strong>Représentant(e)</strong> avec 8 occurrences.</p>
-                            <div class="warning">
-                                <input type="checkbox" id="warning2">
-                                <label for="warning2">Avertissement</label>
-                                <div class="warning-content">
-                                    <p><strong>Note :</strong> Il y a des variations orthographiques (Représentant(e), Représentante) qui devraient être harmonisées.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details id="question3h">
-                        <summary><strong>h) Quels produits (nom, catégorie et prix) ont été commandés par le client Mikal Pavbo ?</strong></summary>
-                        <div class="details-content">
-                            <p>Le client <strong>Mikal Pavbo</strong> n'existe pas, mais le client <strong>Mikal</strong> avec le code <strong>PAVBO</strong> a passé les commandes suivantes :</p>
-                            <table class="styled-table">
-                                <thead>
-                                    <tr>
-                                        <th>Commande N°</th>
-                                        <th>Produit</th>
-                                        <th>Quantité</th>
-                                        <th>Prix Unitaire</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>11110</td>
-                                        <td>Aniseed Syrup</td>
-                                        <td>6</td>
-                                        <td>10 €</td>
-                                        <td>60 €</td>
-                                    </tr>
-                                    <tr>
-                                        <td>11110</td>
-                                        <td>Boston Crab Meat</td>
-                                        <td>40</td>
-                                        <td>12,80 €</td>
-                                        <td>512 €</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="warning">
-                                <input type="checkbox" id="warning3">
-                                <label for="warning3">Avertissement</label>
-                                <div class="warning-content">
-                                    <p><strong>Note :</strong> Les données contiennent des doublons pour les mêmes commandes et produits, indiquant un possible problème.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details id="question3i">
-                        <summary><strong>i) Quelles sont les dates des commandes du client MORIU ?</strong></summary>
-                        <div class="details-content">
-                            <p>Le client <strong>MORIU</strong> n'existe pas, mais il s'agit probablement de <strong>MORJU</strong>. Dates des commandes :</p>
-                            <ul>
-                                <li>03/12/2020</li>
-                                <li>06/12/2020</li>
-                            </ul>
-                        </div>
-                    </details>
-
-                    <details id="question3j">
-                        <summary><strong>j) Donnez l’offre de produits suédois.</strong></summary>
-                        <div class="details-content">
-                            <p>Liste des produits suédois :</p>
-                            <table class="styled-table">
-                                <thead>
-                                    <tr>
-                                        <th>Produit</th>
-                                        <th>Catégorie</th>
-                                        <th>Quantité</th>
-                                        <th>Prix Unitaire</th>
-                                        <th>Stock</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Tunnbröd</td>
-                                        <td>Pain</td>
-                                        <td>12 cartons (250 g)</td>
-                                        <td>7,50 €</td>
-                                        <td>61</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="warning">
-                                <input type="checkbox" id="warning4">
-                                <label for="warning4">Avertissement</label>
-                                <div class="warning-content">
-                                    <p><strong>Note :</strong> Incohérences dans l'orthographe du pays (Suède/Suéde), ce qui peut poser des problèmes.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details id="question3k">
-                        <summary><strong>k) Quelles sont les catégories de produit vendues par les fournisseurs Singapouriens ?</strong></summary>
-                        <div class="details-content">
-                            <p>Catégories :</p>
-                            <ul>
-                                <li><strong>Boissons</strong> : Boissons, cafés, thés, alcools.</li>
-                                <li><strong>Condiments</strong> : Sauces, assaisonnements et épices.</li>
-                            </ul>
-                        </div>
-                    </details>
-
-                    <details id="question3l">
-                        <summary><strong>l) Est-ce qu’il y a dans la clientèle des clients qui n’ont pas passé de commande ?</strong></summary>
-                        <div class="details-content">
-                            <p>Oui, certains clients n'ont jamais passé de commande, et inversement.</p>
-                            <table class="styled-table">
-                                <thead>
-                                    <tr>
-                                        <th>Clients ayant passé une commande</th>
-                                        <th>Clients sans commande</th>
-                                        <th>Clients inexistants ayant passé une commande</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>ALYAD</td>
-                                        <td>ATAUG</td>
-                                        <td>ANBCE</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="warning">
-                                <input type="checkbox" id="warning5">
-                                <label for="warning5">Avertissement</label>
-                                <div class="warning-content">
-                                    <p><strong>Note :</strong> Des clients ont passé des commandes sans être dans la liste des clients.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details id="question3m">
-                        <summary><strong>m) Comment sont conditionnés les produits ?</strong></summary>
-                        <div class="details-content">
-                            <p>Les produits sont conditionnés de différentes manières :</p>
-                            <ul>
-                                <li><strong>Boîtes</strong> (e.g., "10 boîtes x 20 sacs")</li>
-                                <li><strong>Bouteilles</strong> (e.g., "24 bouteilles (12 onces)")</li>
-                                <li><strong>Pots</strong> (e.g., "24 pots (250 g)")</li>
-                            </ul>
-                        </div>
-                    </details>
-                </div>
-            </details>
-
-            <details id="question4">
-                <summary><strong>4) Problèmes identifiés dans les données.</strong></summary>
-                <div class="details-content">
-                    <ul>
-                        <li><strong>Incohérences dans les noms de pays</strong> (USA vs États-Unis).</li>
-                        <li><strong>Variations orthographiques</strong> dans les fonctions de contact.</li>
-                        <li><strong>Réclamations clients</strong> dues à des erreurs de gestion.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details id="question5">
-                <summary><strong>5) Idées d’amélioration de l’organisation des données.</strong></summary>
-                <div class="details-content">
-                    <p>Utiliser les filtres d'Excel pour identifier les incohérences, scripts VBA pour automatiser la standardisation, puis migrer vers une base de données relationnelle (Access ou Oracle) pour une gestion plus robuste avec SQL.</p>
-                </div>
-            </details>
-
-        </section>
-
-        <footer>
-            <p>&copy; Rapport SAE 1.04 Équipe 12D</p>
-        </footer>
-    </body>
+    <footer>
+        <p>Rapport SAE 1.04 Équipe 12D - Mission 1 - Page Web et Mission faite et rédigé par Raphaël Rispaud</p>
+    </footer>
+</body>
 </html>
+
